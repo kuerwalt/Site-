@@ -1,0 +1,1848 @@
+# Site-
+Prefeitura
+
+
+
+-- phpMyAdmin SQL Dump
+-- version 2.7.0-pl2
+-- http://www.phpmyadmin.net
+-- 
+-- Servidor: localhost
+-- Tempo de Geração: Dez 06, 2013 as 10:24 PM
+-- Versão do Servidor: 5.0.18
+-- Versão do PHP: 5.1.2
+-- 
+-- Banco de Dados: `portal`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `acessos`
+-- 
+
+CREATE TABLE `acessos` (
+  `codigo` bigint(6) NOT NULL auto_increment,
+  `ip` varchar(20) NOT NULL default '',
+  `browser` varchar(20) NOT NULL default '',
+  `so` varchar(20) NOT NULL default '',
+  `data` date NOT NULL default '0000-00-00',
+  PRIMARY KEY  (`codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `acessos`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `agenda`
+-- 
+
+CREATE TABLE `agenda` (
+  `id` int(3) NOT NULL auto_increment,
+  `id_franquia` char(3) NOT NULL default '1',
+  `data` date NOT NULL default '0000-00-00',
+  `titulo` varchar(255) NOT NULL default '',
+  `informacoes` text NOT NULL,
+  `local` varchar(255) NOT NULL default '',
+  `cidade` varchar(255) NOT NULL default '',
+  `imagem` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `agenda`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `albuns`
+-- 
+
+CREATE TABLE `albuns` (
+  `id` int(9) NOT NULL auto_increment,
+  `id_user` varchar(5) NOT NULL default '',
+  `fotos` varchar(200) NOT NULL default '',
+  `descricao` varchar(200) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `albuns`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `areas`
+-- 
+
+CREATE TABLE `areas` (
+  `codigo` tinyint(4) NOT NULL auto_increment,
+  `area` varchar(40) NOT NULL default '',
+  `url` varchar(100) NOT NULL default '',
+  `num_acessos` int(5) NOT NULL default '0',
+  PRIMARY KEY  (`codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `areas`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `banners`
+-- 
+
+CREATE TABLE `banners` (
+  `id` int(3) NOT NULL auto_increment,
+  `id_franquia` char(3) NOT NULL default '',
+  `tipo` varchar(20) NOT NULL default '',
+  `formato` varchar(20) NOT NULL default '',
+  `pagina` varchar(20) NOT NULL default 'padrao',
+  `posicao` varchar(20) NOT NULL default '',
+  `arquivo` varchar(255) NOT NULL default '',
+  `url` varchar(255) NOT NULL default '',
+  `link` varchar(255) NOT NULL default '',
+  `displays_life` varchar(20) NOT NULL default '0',
+  `displays_day` varchar(20) NOT NULL default '0',
+  `clicks_life` varchar(20) NOT NULL default '0',
+  `clicks_day` varchar(20) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `banners`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `banners_popup`
+-- 
+
+CREATE TABLE `banners_popup` (
+  `id` int(3) NOT NULL auto_increment,
+  `id_franquia` varchar(5) NOT NULL default '1',
+  `tipo` varchar(10) NOT NULL default 'imagem',
+  `arquivo` varchar(255) NOT NULL default '',
+  `largura` char(3) NOT NULL default '',
+  `altura` char(3) NOT NULL default '',
+  `posicaox` char(3) NOT NULL default '10',
+  `posicaoy` char(3) NOT NULL default '10',
+  `ordem` char(3) NOT NULL default '1',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `banners_popup`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `cat_piadas`
+-- 
+
+CREATE TABLE `cat_piadas` (
+  `id` int(2) NOT NULL auto_increment,
+  `categoria` varchar(15) NOT NULL default '',
+  KEY `id` (`id`),
+  KEY `id_2` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `cat_piadas`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `cat_videos`
+-- 
+
+CREATE TABLE `cat_videos` (
+  `id` int(5) NOT NULL auto_increment,
+  `nome` varchar(100) NOT NULL default '',
+  `pasta` varchar(100) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `cat_videos`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `cidades`
+-- 
+
+CREATE TABLE `cidades` (
+  `id` int(4) NOT NULL auto_increment,
+  `idcid` varchar(4) NOT NULL default '0',
+  `cidade` varchar(100) NOT NULL default '',
+  `historico` longtext NOT NULL,
+  `area` varchar(100) NOT NULL default '',
+  `populacao` varchar(100) NOT NULL default '',
+  `clima` varchar(100) NOT NULL default '',
+  `temperatura` varchar(100) NOT NULL default '',
+  `ddd` varchar(100) NOT NULL default '',
+  PRIMARY KEY  (`id`,`idcid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `cidades`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `class_cat`
+-- 
+
+CREATE TABLE `class_cat` (
+  `id` int(6) NOT NULL auto_increment,
+  `nome` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+-- 
+-- Extraindo dados da tabela `class_cat`
+-- 
+
+INSERT INTO `class_cat` VALUES (1, 'Anúncios Diversos');
+INSERT INTO `class_cat` VALUES (2, 'Prestação de Serviços');
+INSERT INTO `class_cat` VALUES (3, 'Arrecadação');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `class_registros`
+-- 
+
+CREATE TABLE `class_registros` (
+  `id` int(9) NOT NULL auto_increment,
+  `id_cat` varchar(6) NOT NULL default '',
+  `id_user` varchar(6) NOT NULL default '',
+  `titulo` varchar(255) NOT NULL default '',
+  `descricao` text NOT NULL,
+  `nome` varchar(255) NOT NULL default '',
+  `email` varchar(255) NOT NULL default '',
+  `fone` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `class_registros`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `como_chegar`
+-- 
+
+CREATE TABLE `como_chegar` (
+  `id` int(4) NOT NULL auto_increment,
+  `idcid` varchar(100) NOT NULL default '',
+  `texto` longtext NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `como_chegar`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `config`
+-- 
+
+CREATE TABLE `config` (
+  `id` int(2) NOT NULL auto_increment,
+  `tsite` varchar(100) NOT NULL default '',
+  `usite` varchar(255) NOT NULL default '',
+  `fonte` varchar(50) NOT NULL default '',
+  `tfonte` char(2) NOT NULL default '',
+  `ttitulo` char(2) NOT NULL default '',
+  `coronmouse` varchar(10) NOT NULL default '',
+  `cortexto` varchar(10) NOT NULL default '',
+  `corcelula1` varchar(10) NOT NULL default '',
+  `corcelula2` varchar(10) NOT NULL default '',
+  `corfundosite` varchar(10) NOT NULL default '',
+  `qts_colunas` char(2) NOT NULL default '2',
+  `qts_thumbs` char(2) NOT NULL default '12',
+  `thumbs_width` char(2) NOT NULL default '70',
+  `thumbs_height` char(2) NOT NULL default '55',
+  `zoom_width` char(3) NOT NULL default '354',
+  `zoom_height` char(3) NOT NULL default '265',
+  `qts_ultimos` char(2) NOT NULL default '4',
+  `loginho` varchar(255) NOT NULL default 'loginho.png',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- Extraindo dados da tabela `config`
+-- 
+
+INSERT INTO `config` VALUES (1, 'Prefeitura Municipal de Santa Cruz do Xingu - MT', 'http://santacruzdoxingu.mt.gov.br/', 'Arial, Verdana, Tahoma', '12', '14', '#FFFFF', '#FFFFFF', '#666666', '#333333', '#333333', '2', '15', '70', '50', '353', '265', '20', 'loginho.png');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `conteudo`
+-- 
+
+CREATE TABLE `conteudo` (
+  `id` int(5) NOT NULL auto_increment,
+  `id_menusub` varchar(6) NOT NULL default '',
+  `texto` longtext NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- Extraindo dados da tabela `conteudo`
+-- 
+
+INSERT INTO `conteudo` VALUES (1, '803', 'TESTE TESTANDO!<br>\r\n\r\nAqui você desenvolve sua página!<br>\r\nmmas lembre-se, a largura máxima que você pode usar nos objetos é 478 pixels.\r\n');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `contratos`
+-- 
+
+CREATE TABLE `contratos` (
+  `id_contrato` int(11) NOT NULL auto_increment,
+  `nome_contrato` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
+  `descricao_contrato` varchar(100) character set utf8 collate utf8_unicode_ci NOT NULL,
+  `tamanho_contrato` mediumint(9) NOT NULL,
+  `dados_contrato` mediumblob NOT NULL,
+  PRIMARY KEY  (`id_contrato`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `contratos`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `destaque`
+-- 
+
+CREATE TABLE `destaque` (
+  `id` int(3) NOT NULL auto_increment,
+  `id_franquia` char(3) NOT NULL default '',
+  `id_galeria` varchar(5) NOT NULL default '',
+  `categoria` varchar(50) NOT NULL default '',
+  `foto` varchar(255) NOT NULL default '',
+  `titulo` varchar(255) NOT NULL default '',
+  `texto` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+-- 
+-- Extraindo dados da tabela `destaque`
+-- 
+
+INSERT INTO `destaque` VALUES (6, '1', '13', 'fotodia', 'Servidores publicos.jpg', 'Em busca de melhorar a qualidade de atendimento ao cidadão.', 'Prefeitura Municipal e Câmara Municipal de Santa Cruz do Xingu - MT qualificando seus servidores para um atendimento melhor aos munícipes, sobre o supervisão do SENAI.\r\n\r\nCurso de Relações interpessoais para os Servidores Públicos Municipais\r\n');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `destaque2`
+-- 
+
+CREATE TABLE `destaque2` (
+  `id` int(3) NOT NULL auto_increment,
+  `id_franquia` char(3) NOT NULL default '',
+  `id_galeria` varchar(5) NOT NULL default '',
+  `categoria` varchar(50) NOT NULL default '',
+  `foto` varchar(255) NOT NULL default '',
+  `titulo` varchar(255) NOT NULL default '',
+  `texto` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- Extraindo dados da tabela `destaque2`
+-- 
+
+INSERT INTO `destaque2` VALUES (1, '1', '14', 'fotodia', 'capa.jpg', 'Município recebe uma motoniveladora nova para manutenção de nossas estradas vicinais pelo MDA Programa PAC 2. ', 'Município recebe uma motoniveladora nova para manutenção de nossas estradas vicinais pelo MDA Programa PAC 2.\r\n \r\nAgradecimentos á bancada federal de Mato Grosso, Secretaria Municipal de obras Secretário Ormindo Lucas Alves, Secretaria Municipal de Agricu');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `destaque3`
+-- 
+
+CREATE TABLE `destaque3` (
+  `id` int(3) NOT NULL auto_increment,
+  `id_franquia` char(3) NOT NULL default '',
+  `id_galeria` varchar(5) NOT NULL default '',
+  `categoria` varchar(50) NOT NULL default '',
+  `foto` varchar(255) NOT NULL default '',
+  `titulo` varchar(255) NOT NULL default '',
+  `texto` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- Extraindo dados da tabela `destaque3`
+-- 
+
+INSERT INTO `destaque3` VALUES (1, '1', '15', 'fotodia', 'capa.jpg', 'Município  receberá cursos profissionais pelo Senai através do Pronatec.', 'Prefeito Marcos de Sá, em Barra do Garças, firma pacto de cursos profissionais pelo Senai através do Pronatec.\r\n\r\nSerão dezenas de cursos oferecidos pela Secretaria de Assistência Social. Dentre os quais se destaca os do ramo da construção civil. Cada mód');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `destaque4`
+-- 
+
+CREATE TABLE `destaque4` (
+  `id` int(3) NOT NULL auto_increment,
+  `id_franquia` char(3) NOT NULL default '',
+  `id_galeria` varchar(5) NOT NULL default '',
+  `categoria` varchar(50) NOT NULL default '',
+  `foto` varchar(255) NOT NULL default '',
+  `titulo` varchar(255) NOT NULL default '',
+  `texto` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- Extraindo dados da tabela `destaque4`
+-- 
+
+INSERT INTO `destaque4` VALUES (1, '1', '16', 'fotodia', 'bancada municipal.jpg', 'Acompanhamento da licitação do asfalto até o entroncamento do Natanael ', 'Em Cuiabá bancada municipal acompanha andamento da licitação do asfalto que ligará Santa Cruz do Xingu ao entroncamento do Natanael na Secretaria Estadual de Infraestrutura de Mato Grosso.\r\n\r\n8 empresas manifestaram interesse na licitação do serviço de 65');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `destaque5`
+-- 
+
+CREATE TABLE `destaque5` (
+  `id` int(3) NOT NULL auto_increment,
+  `id_franquia` char(3) NOT NULL default '',
+  `id_galeria` varchar(5) NOT NULL default '',
+  `categoria` varchar(50) NOT NULL default '',
+  `foto` varchar(255) NOT NULL default '',
+  `titulo` varchar(255) NOT NULL default '',
+  `texto` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- Extraindo dados da tabela `destaque5`
+-- 
+
+INSERT INTO `destaque5` VALUES (1, '1', '17', 'fotodia', 'foto_site.jpg', 'Lançamento oficial do portal do município de Santa Cruz do Xingu – MT', 'O município de Santa Cruz do Xingu – MT lançará portal oficial que servirá como meio de divulgação de suas ações e transparência de um trabalho que expressa responsabilidade e sucesso.\r\n\r\nO portal ficará hospedado no endereço eletrônico www.santacruzdoxin');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `enquete_comment`
+-- 
+
+CREATE TABLE `enquete_comment` (
+  `com_id` int(9) NOT NULL auto_increment,
+  `poll_id` int(9) NOT NULL default '0',
+  `time` int(11) NOT NULL default '0',
+  `host` varchar(70) NOT NULL default '',
+  `browser` varchar(70) NOT NULL default '',
+  `name` varchar(60) NOT NULL default '',
+  `email` varchar(70) NOT NULL default '',
+  `message` text NOT NULL,
+  PRIMARY KEY  (`com_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `enquete_comment`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `enquete_config`
+-- 
+
+CREATE TABLE `enquete_config` (
+  `config_id` smallint(5) unsigned NOT NULL auto_increment,
+  `base_gif` varchar(60) NOT NULL default '',
+  `lang` varchar(20) NOT NULL default '',
+  `title` varchar(60) NOT NULL default '',
+  `vote_button` varchar(30) NOT NULL default '',
+  `result_text` varchar(40) NOT NULL default '',
+  `total_text` varchar(40) NOT NULL default '',
+  `voted` varchar(40) NOT NULL default '',
+  `send_com` varchar(40) NOT NULL default '',
+  `img_height` int(5) NOT NULL default '0',
+  `img_length` int(5) NOT NULL default '0',
+  `table_width` varchar(6) NOT NULL default '',
+  `bgcolor_tab` varchar(7) NOT NULL default '',
+  `bgcolor_fr` varchar(7) NOT NULL default '',
+  `font_face` varchar(70) NOT NULL default '',
+  `font_color` varchar(7) NOT NULL default '',
+  `type` varchar(10) NOT NULL default '0',
+  `check_ip` smallint(2) NOT NULL default '0',
+  `lock_timeout` int(9) NOT NULL default '0',
+  `time_offset` varchar(5) NOT NULL default '0',
+  `entry_pp` int(4) unsigned NOT NULL default '0',
+  `poll_version` varchar(5) NOT NULL default '0',
+  `base_url` varchar(100) NOT NULL default '',
+  `result_order` varchar(20) NOT NULL default '',
+  `def_options` smallint(3) unsigned NOT NULL default '0',
+  `polls_pp` int(5) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`config_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- Extraindo dados da tabela `enquete_config`
+-- 
+
+INSERT INTO `enquete_config` VALUES (1, '/estrutura/enquetes/image', 'portuguese.php', 'ENQUETES', 'VOTAR', 'RESULTADOS', 'Total de Votos', '.', 'Enviar Coment?rios', 6, 113, '125', '#F2F2F2', '#666699', 'Verdana, Arial, Helvetica, sans-serif', '#000000', 'percent', 2, 24, '1', 10, '2.02', '/estrutura/enquetes', 'desc', 10, 12);
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `enquete_data`
+-- 
+
+CREATE TABLE `enquete_data` (
+  `id` int(11) NOT NULL auto_increment,
+  `poll_id` int(11) NOT NULL default '0',
+  `option_id` int(11) NOT NULL default '0',
+  `option_text` varchar(100) NOT NULL default '',
+  `color` varchar(20) NOT NULL default '',
+  `votes` int(14) NOT NULL default '0',
+  PRIMARY KEY  (`poll_id`,`option_id`),
+  KEY `id` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `enquete_data`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `enquete_index`
+-- 
+
+CREATE TABLE `enquete_index` (
+  `poll_id` int(11) unsigned NOT NULL auto_increment,
+  `question` varchar(100) NOT NULL default '',
+  `timestamp` int(11) NOT NULL default '0',
+  `status` smallint(2) NOT NULL default '0',
+  `logging` smallint(2) NOT NULL default '0',
+  `exp_time` int(11) NOT NULL default '0',
+  `expire` smallint(2) NOT NULL default '0',
+  `comments` smallint(2) NOT NULL default '0',
+  PRIMARY KEY  (`poll_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `enquete_index`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `enquete_ip`
+-- 
+
+CREATE TABLE `enquete_ip` (
+  `ip_id` int(11) NOT NULL auto_increment,
+  `poll_id` int(11) NOT NULL default '0',
+  `ip_addr` varchar(15) NOT NULL default '',
+  `timestamp` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`ip_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `enquete_ip`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `enquete_log`
+-- 
+
+CREATE TABLE `enquete_log` (
+  `log_id` int(11) unsigned NOT NULL auto_increment,
+  `poll_id` int(11) NOT NULL default '0',
+  `option_id` int(11) NOT NULL default '0',
+  `timestamp` int(11) NOT NULL default '0',
+  `ip_addr` varchar(15) NOT NULL default '',
+  `host` varchar(70) NOT NULL default '',
+  `agent` varchar(80) NOT NULL default '0',
+  PRIMARY KEY  (`log_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `enquete_log`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `enquete_templates`
+-- 
+
+CREATE TABLE `enquete_templates` (
+  `tpl_id` int(10) unsigned NOT NULL auto_increment,
+  `tplset_id` int(10) unsigned NOT NULL default '0',
+  `title` varchar(100) NOT NULL default '',
+  `template` mediumtext NOT NULL,
+  PRIMARY KEY  (`tpl_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+
+-- 
+-- Extraindo dados da tabela `enquete_templates`
+-- 
+
+INSERT INTO `enquete_templates` VALUES (1, 1, 'display_head', '<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">\r\n<tr> \r\n<td height="40" colspan="2" align="center" valign="middle"><table width="95%"  border="0" cellspacing="0" cellpadding="0">\r\n  <tr>\r\n    <td align="center" valign="middle"><b>$question</b><br><br>      </td>\r\n  </tr>\r\n</table></td>\r\n</tr>\r\n<form method="post" action="$this->form_forward">');
+INSERT INTO `enquete_templates` VALUES (2, 1, 'display_loop', ' <tr> \r\n   <td width="15%"><input type="radio" name="option_id" value="$data[option_id]"></td>\r\n   <td width="85%" height="26">$data[option_text]</td>\r\n </tr>');
+INSERT INTO `enquete_templates` VALUES (3, 1, 'display_foot', ' \r\n    <tr align="center" valign="top"> \r\n      <td colspan="2"><br>\r\n<input type="hidden" name="action" value="vote">\r\n                    <input type="hidden" name="poll_ident" value="$poll_id">\r\n                    <input type="image" value="$pollvars[vote_button]" src="images/bt_vot.gif" width="34" height="16">\r\n	  <a href="?pg=principal&action=results&amp;poll_ident=$poll_id"><img src="images/bt_res.gif" border="0"></a>\r\n    </form>\r\n          </td>\r\n        </tr>\r\n      </table>');
+INSERT INTO `enquete_templates` VALUES (4, 1, 'result_head', '<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">\r\n<tr> \r\n<td height="40" colspan="2" align="center" valign="middle"><table width="95%"  border="0" cellspacing="0" cellpadding="0">\r\n  <tr>\r\n    <td align="center" valign="middle"><b>$question</b><br><br></td>\r\n  </tr>\r\n</table></td>\r\n</tr>');
+INSERT INTO `enquete_templates` VALUES (5, 1, 'result_loop', '<tr>\r\n    <td height="30"><b>?$option_text</b> - $vote_val<br>\r\n    ?<img src="$pollvars[base_gif]/$poll_color.gif" border="1" width="$img_width" height="$pollvars[img_height]"></td>\r\n</tr>');
+INSERT INTO `enquete_templates` VALUES (6, 1, 'result_foot', '<tr><td align="center"><br>\r\n\r\n       $pollvars[total_text]: <b>$total_votes</b><BR>\r\n       <font color="red"><b>$VOTE</b><br>\r\n       $COMMENT\r\n</td>\r\n</tr>\r\n</table>');
+INSERT INTO `enquete_templates` VALUES (7, 1, 'comment', '<table border="0" cellspacing="0" cellpadding="1" align="center" bgcolor="#0168B3">\r\n  <tr align="center">\r\n    <td>\r\n     <style type="text/css">\r\n      <!--\r\n       .button {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}\r\n       .textarea {  font-family: "MS Sans Serif"; font-size: 9pt; width: 195px}\r\n       .input {  width: 195px}\r\n      -->\r\n    </style><font color="#000000" face="verdana,tahoma,arial" size="1"><b>Envie seu Coment?rio</b></font></td>\r\n  </tr>\r\n  <tr>\r\n    <td>\r\n      <table border="0" cellspacing="0" cellpadding="5" align="center" bgcolor="#FFFFFF" width="200">\r\n        <tr>\r\n          <td width="149">\r\n            <form method="post" action="$this->form_forward">\r\n              <table border="0" cellspacing="0" cellpadding="2" bgcolor="" align="center">\r\n                <tr>\r\n                  <td height="40" align="center" class="td1"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="1">$question</font></b></td>\r\n                </tr>\r\n                <tr>\r\n                  <td class="td1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Nome:</font><br>\r\n                    <input type="text" name="name" maxlength="25" class="input" size="23">\r\n                  </td>\r\n                </tr>\r\n                <tr>\r\n                  <td class="td1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">e-mail:</font><br>\r\n                    <input type="text" name="email" size="23" maxlength="50" class="input">\r\n                  </td>\r\n                </tr>\r\n                <tr>\r\n                  <td class="td1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Coment?rios(*):</font><br>\r\n                    <font face="MS Sans Serif" size="1">\r\n                    <textarea name="message" cols="19" wrap="VIRTUAL" rows="6" class="textarea"></textarea>\r\n                    </font>\r\n                  </td>\r\n                </tr>\r\n                <tr valign="top">\r\n                  <td align="center">\r\n                    <input type="submit" value="Enviar" class="button">\r\n                    <input type="reset" value="Limpar" class="button">\r\n                    <input type="hidden" name="action" value="add">\r\n                    <input type="hidden" name="id" value="$poll_id">\r\n                  </td>\r\n                </tr>\r\n              </table>\r\n            </form>\r\n          </td>\r\n        </tr>\r\n      </table>\r\n    </td>\r\n  </tr>\r\n</table>\r\n');
+INSERT INTO `enquete_templates` VALUES (8, 2, 'display_head', '<table width="$pollvars[table_width]" cellspacing="0" cellpadding="0" border="0" bgcolor="#F3F3F3">\r\n  <tr valign="top"> \r\n    <td valign="top" align="right">\r\n      <form method="post" action="$this->form_forward">\r\n        <table width="100%" border="0" cellspacing="0" cellpadding="3">\r\n          <tr bgcolor="$pollvars[bgcolor_fr]"> \r\n            <td colspan="2" height="30"><font face="$pollvars[font_face]" color="#FFFFFF" size="1"><b>\r\n              $question</b></font></td>\r\n          </tr>\r\n');
+INSERT INTO `enquete_templates` VALUES (9, 2, 'display_loop', '<tr> \r\n    <td width="14%"><input type="radio" name="option_id" value="$data[option_id]"></td>\r\n    <td width="86%"><font face="$pollvars[font_face]" size="1" color="$pollvars[font_color]">$data[option_text]</font></td>\r\n</tr>\r\n');
+INSERT INTO `enquete_templates` VALUES (10, 2, 'display_foot', '          <tr align="center"> \r\n            <td colspan="2"> \r\n              <input type="image" border="0" src="$pollvars[base_gif]/vote.gif" width="110" height="48">\r\n              <input type="hidden" name="action" value="vote">\r\n              <input type="hidden" name="poll_ident" value="$poll_id">\r\n              <br>\r\n              <font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1"><a href="$this->form_forward?action=results&amp;poll_ident=$poll_id">$pollvars[result_text]</a>\r\n            </td>\r\n          </tr>\r\n        </table>\r\n      </form>\r\n      <font face="$pollvars[font_face]" size="1"><a href="http://www.proxy2.de" target="_blank" title="Advanced Poll">Version $pollvars[poll_version]</a></font>\r\n     </td>\r\n  </tr>\r\n</table>\r\n');
+INSERT INTO `enquete_templates` VALUES (11, 2, 'result_head', '<table width="170" border="0" cellspacing="0" cellpadding="3" bgcolor="#F3F3F3">\r\n  <tr> \r\n    <td colspan="2" height="25" bgcolor="$pollvars[bgcolor_fr]"><font face="$pollvars[font_face]" color="#FFFFFF" size="1"><b>$question</b></font></td>\r\n  </tr>\r\n\r\n');
+INSERT INTO `enquete_templates` VALUES (12, 2, 'result_loop', '  <tr> \r\n    <td colspan="2"><font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1">$option_text</font></td>\r\n  </tr>\r\n  <tr> \r\n    <td width="52%"><img src="$pollvars[base_gif]/greenbar.gif" width="$img_width" height="7"></td>\r\n    <td width="48%"><font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1">$vote_val</font></td>\r\n  </tr>\r\n');
+INSERT INTO `enquete_templates` VALUES (13, 2, 'result_foot', '  <tr> \r\n    <td colspan="2" height="40"><font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1"> \r\n      $pollvars[total_text]: <font color="#CC0000">$total_votes</font>\r\n      <br>$VOTE</font><br><div align="center"><font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1">$COMMENT</font></div>\r\n    </td>\r\n  </tr>\r\n  <tr align="right" valign="bottom" height="30"> \r\n    <td colspan="2"><font face="$pollvars[font_face]" size="1"><a href="http://www.proxy2.de" target="_blank" title="Advanced Poll">Version $pollvars[poll_version]</a></font></td>\r\n  </tr>\r\n</table>\r\n');
+INSERT INTO `enquete_templates` VALUES (14, 2, 'comment', '<table border="0" cellspacing="0" cellpadding="1" align="center" bgcolor="#666699">\r\n  <tr align="center">\r\n    <td>\r\n     <style type="text/css">\r\n      <!--\r\n       .button {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}\r\n       .textarea {  font-family: "MS Sans Serif"; font-size: 9pt; width: 195px}\r\n       .input {  width: 195px}\r\n      -->\r\n    </style><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>Send Your Comment</b></font></td>\r\n  </tr>\r\n  <tr>\r\n    <td>\r\n      <table border="0" cellspacing="0" cellpadding="5" align="center" bgcolor="#F3F3F3" width="200">\r\n        <tr>\r\n          <td width="149">\r\n            <form method="post" action="$this->form_forward">\r\n              <table border="0" cellspacing="0" cellpadding="2" bgcolor="" align="center">\r\n                <tr>\r\n                  <td class="td1" height="40"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="1">$question</font></b></td>\r\n                </tr>\r\n                <tr>\r\n                  <td class="td1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Name:</font><br>\r\n                    <input type="text" name="name" maxlength="25" class="input" size="23">\r\n                  </td>\r\n                </tr>\r\n                <tr>\r\n                  <td class="td1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">e-mail:</font><br>\r\n                    <input type="text" name="email" size="23" maxlength="50" class="input">\r\n                  </td>\r\n                </tr>\r\n                <tr>\r\n                  <td class="td1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Comment(*):</font><br>\r\n                    <font face="MS Sans Serif" size="1">\r\n                    <textarea name="message" cols="19" wrap="VIRTUAL" rows="6" class="textarea"></textarea>\r\n                    </font>\r\n                  </td>\r\n                </tr>\r\n                <tr valign="top">\r\n                  <td>\r\n                    <input type="submit" value="Submit" class="button">\r\n                    <input type="reset" value="Reset" class="button">\r\n                    <input type="hidden" name="action" value="add">\r\n                    <input type="hidden" name="id" value="$poll_id">\r\n                  </td>\r\n                </tr>\r\n              </table>\r\n            </form>\r\n          </td>\r\n        </tr>\r\n      </table>\r\n    </td>\r\n  </tr>\r\n</table>\r\n');
+INSERT INTO `enquete_templates` VALUES (15, 3, 'display_head', '<table width="$pollvars[table_width]" border="0" cellspacing="0" cellpadding="1" bgcolor="$pollvars[bgcolor_fr]">\r\n  <tr align="center">\r\n    <td>\r\n      <style type="text/css">\r\n <!--\r\n  .input { font-family: $pollvars[font_face]; font-size: 8pt}\r\n -->\r\n</style>\r\n      <font face="$pollvars[font_face]" size="-1" color="#FFFFFF"><b>$pollvars[title]</b></font></td>\r\n  </tr>\r\n  <tr align="center"> \r\n    <td> \r\n      <table width="100%" border="0" cellspacing="0" cellpadding="2" align="center" bgcolor="$pollvars[bgcolor_tab]">\r\n        <tr> \r\n          <td height="40" valign="middle"><font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1"><b>$question</b></font></td>\r\n        </tr>\r\n        <tr align="right" valign="top"> \r\n          <td>\r\n            <form method="post" name="poll_$poll_id" onsubmit="return poll_results_$poll_id(''vote'',''$pollvars[base_url]/popup.php'',''Poll'',''500'',''350'',''toolbar=no,scrollbars=yes'');">\r\n              <script language="JavaScript">\r\n<!--\r\nfunction poll_results_$poll_id(action,theURL,winName,winWidth,winHeight,features) {      \r\n    var w = (screen.width - winWidth)/2;\r\n    var h = (screen.height - winHeight)/2 - 20;\r\n    features = features+'',width=''+winWidth+'',height=''+winHeight+'',top=''+h+'',left=''+w;\r\n    var poll_ident = self.document.poll_$poll_id.poll_ident.value;\r\n    option_id = '''';\r\n    for (i=0; i<self.document.poll_$poll_id.option_id.length; i++) {\r\n        if(self.document.poll_$poll_id.option_id[i].checked == true) {\r\n            option_id = self.document.poll_$poll_id.option_id[i].value;\r\n            break;\r\n        }\r\n    }\r\n    option_id = (option_id != '''') ? ''&option_id=''+option_id : '''';\r\n    if (action==''results'' || (option_id != '''' && action==''vote'')) {\r\n        theURL = theURL+''?action=''+action+''&poll_ident=''+poll_ident+option_id;\r\n        poll_popup = window.open(theURL,winName,features);\r\n        poll_popup.focus();\r\n    }\r\n    return false;\r\n}\r\n//-->\r\n        </script>\r\n              <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">\r\n                <tr valign="top" align="center"> \r\n                  <td> \r\n                    <table width="100%" border="0" cellspacing="0" cellpadding="1" align="center">\r\n');
+INSERT INTO `enquete_templates` VALUES (16, 3, 'display_loop', ' <tr> \r\n   <td width="15%"><input type="radio" name="option_id" value="$data[option_id]"></td>\r\n   <td width="85%"><font face="$pollvars[font_face]" size="1" color="$pollvars[font_color]">$data[option_text]</font></td>\r\n </tr>\r\n');
+INSERT INTO `enquete_templates` VALUES (17, 3, 'display_foot', '                    </table>\r\n                    <input type="hidden" name="action" value="vote">\r\n                    <input type="hidden" name="poll_ident" value="$poll_id">\r\n                    <input type="submit" value="$pollvars[vote_button]" class="input">\r\n                    <br>\r\n                    <br>\r\n                    <font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1"><a href="javascript:void(poll_results_$poll_id(''results'',''$pollvars[base_url]/popup.php'',''Poll'',''500'',''350'',''toolbar=no,scrollbars=yes''))">$pollvars[result_text]</a><br>\r\n                    </font></td>\r\n                </tr>\r\n              </table>\r\n            </form>\r\n            <font face="$pollvars[font_face]" size="1"><a href="http://www.proxy2.de" target="_blank" title="Advanced Poll">Version $pollvars[poll_version]</a></font>\r\n          </td>\r\n        </tr>\r\n      </table>\r\n    </td>\r\n  </tr>\r\n</table>\r\n');
+INSERT INTO `enquete_templates` VALUES (18, 3, 'result_head', '<table width="450" border="0" cellspacing="0" cellpadding="2" bgcolor="#CCCCCC">\r\n  <tr>\r\n    <td align="center"> \r\n      <table width="100%" border="0" cellspacing="0" cellpadding="3" bgcolor="#F6F6F6">\r\n        <tr align="center"> \r\n          <td colspan="3" height="40"><font face="$pollvars[font_face]" size="1" color="#000000"><b>$question</b></font></td>\r\n        </tr>\r\n');
+INSERT INTO `enquete_templates` VALUES (19, 3, 'result_loop', '        <tr>\r\n          <td width="3%">&nbsp;</td>\r\n          <td><font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1">$option_text</font></td>\r\n          <td><font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1"><img src="$pollvars[base_gif]/$poll_color.gif" width="$img_width" height="$pollvars[img_height]"> $vote_percent % ($vote_count)</font></td>\r\n        </tr>\r\n');
+INSERT INTO `enquete_templates` VALUES (20, 3, 'result_foot', '        <tr> \r\n          <td colspan="3" valign="bottom" align="center"><b><font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1">$pollvars[total_text]: \r\n            $total_votes</font></b></td>\r\n        </tr>\r\n        <tr align="center"> \r\n          <td colspan="3" valign="top"><font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1">$VOTE \r\n            <br>\r\n            $COMMENT</font></td>\r\n        </tr>\r\n        <tr align="right"> \r\n          <td colspan="3"><font face="$pollvars[font_face]" size="1"><a href="http://www.proxy2.de" target="_blank" title="Advanced Poll">Version $pollvars[poll_version]</a></font></td>\r\n        </tr>\r\n      </table>\r\n    </td>\r\n  </tr>\r\n</table>\r\n');
+INSERT INTO `enquete_templates` VALUES (21, 3, 'comment', '<table border="0" cellspacing="0" cellpadding="1" align="center" bgcolor="#666699">\r\n  <tr align="center">\r\n    <td>\r\n     <style type="text/css">\r\n      <!--\r\n       .button {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}\r\n       .textarea {  font-family: "MS Sans Serif"; font-size: 9pt; width: 195px}\r\n       .input {  width: 195px}\r\n      -->\r\n    </style><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>Submit Your Comment</b></font></td>\r\n  </tr>\r\n  <tr>\r\n    <td>\r\n      <table border="0" cellspacing="0" cellpadding="5" align="center" bgcolor="#FFFFFF" width="200">\r\n        <tr>\r\n          <td width="149">\r\n            <form method="post" action="$this->form_forward">\r\n              <table border="0" cellspacing="0" cellpadding="2" bgcolor="" align="center">\r\n                <tr>\r\n                  <td class="td1" height="40"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="1">$question</font></b></td>\r\n                </tr>\r\n                <tr>\r\n                  <td class="td1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Name:</font><br>\r\n                    <input type="text" name="name" maxlength="25" class="input" size="23">\r\n                  </td>\r\n                </tr>\r\n                <tr>\r\n                  <td class="td1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">e-mail:</font><br>\r\n                    <input type="text" name="email" size="23" maxlength="50" class="input">\r\n                  </td>\r\n                </tr>\r\n                <tr>\r\n                  <td class="td1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Comment(*):</font><br>\r\n                    <font face="MS Sans Serif" size="1">\r\n                    <textarea name="message" cols="19" wrap="VIRTUAL" rows="6" class="textarea"></textarea>\r\n                    </font>\r\n                  </td>\r\n                </tr>\r\n                <tr valign="top">\r\n                  <td>\r\n                    <input type="submit" value="Submit" class="button">\r\n                    <input type="reset" value="Reset" class="button">\r\n                    <input type="hidden" name="action" value="add">\r\n                    <input type="hidden" name="id" value="$poll_id">\r\n                  </td>\r\n                </tr>\r\n              </table>\r\n            </form>\r\n          </td>\r\n        </tr>\r\n      </table>\r\n    </td>\r\n  </tr>\r\n</table>\r\n');
+INSERT INTO `enquete_templates` VALUES (22, 4, 'display_head', '<table width="$pollvars[table_width]" border="0" cellspacing="0" cellpadding="1" bgcolor="$pollvars[bgcolor_fr]">\r\n  <tr align="center">\r\n    <td>\r\n      <style type="text/css">\r\n <!--\r\n  .input { font-family: $pollvars[font_face]; font-size: 8pt}\r\n -->\r\n</style>\r\n      <font face="$pollvars[font_face]" size="-1" color="#FFFFFF"><b>$pollvars[title]</b></font></td>\r\n  </tr>\r\n  <tr align="center"> \r\n    <td> \r\n      <table width="100%" border="0" cellspacing="0" cellpadding="2" align="center" bgcolor="$pollvars[bgcolor_tab]">\r\n        <tr> \r\n          <td height="40" valign="middle"><font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1"><b>$question</b></font></td>\r\n        </tr>\r\n        <tr align="right" valign="top"> \r\n          <td>\r\n            <form method="post" action="$this->form_forward">\r\n               <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">\r\n                <tr valign="top" align="center"> \r\n                  <td> \r\n                    <table width="100%" border="0" cellspacing="0" cellpadding="1" align="center">\r\n');
+INSERT INTO `enquete_templates` VALUES (23, 4, 'display_loop', '<tr> \r\n   <td width="15%"><input type="radio" name="option_id" value="$data[option_id]"></td>\r\n   <td width="85%"><font face="$pollvars[font_face]" size="1" color="$pollvars[font_color]">$data[option_text]</font></td>\r\n </tr>\r\n');
+INSERT INTO `enquete_templates` VALUES (24, 4, 'display_foot', '                    </table>\r\n                    <input type="hidden" name="action" value="vote">\r\n                    <input type="hidden" name="poll_ident" value="$poll_id">\r\n                    <input type="submit" value="$pollvars[vote_button]" class="input">\r\n                    <br>\r\n                    <br>\r\n                    <font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1"><a href="$this->form_forward?action=results&amp;poll_ident=$poll_id">$pollvars[result_text]</a><br>\r\n                    </font></td>\r\n                </tr>\r\n              </table>\r\n            </form>\r\n            <font face="$pollvars[font_face]" size="1"><a href="http://www.proxy2.de" target="_blank" title="Advanced Poll">Version $pollvars[poll_version]</a></font>\r\n          </td>\r\n        </tr>\r\n      </table>\r\n    </td>\r\n  </tr>\r\n</table>\r\n');
+INSERT INTO `enquete_templates` VALUES (25, 4, 'result_head', '<table border="0" cellspacing="0" cellpadding="2" width="360">\r\n  <tr> \r\n    <td colspan="2"><font face="$pollvars[font_face]" size="2">$question</font></td>\r\n  </tr>\r\n  <tr> \r\n    <td><img src="$pollvars[base_url]/png.php?poll_id=$poll_id"></td>\r\n    <td> \r\n      <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">\r\n        <tr> \r\n          <td> \r\n            <table width="100%" border="0" cellspacing="0" cellpadding="3" bgcolor="#EBEBEB">');
+INSERT INTO `enquete_templates` VALUES (26, 4, 'result_loop', '            <tr> \r\n                <td width="12"><font size="1" face="$pollvars[font_face]"><img src="$pollvars[base_gif]/$poll_color.gif" width="8" height="10"></font></td>\r\n                <td><font size="1" face="$pollvars[font_face]">$option_text -\r\n                  $vote_val</font></td>\r\n              </tr>');
+INSERT INTO `enquete_templates` VALUES (27, 4, 'result_foot', '              <tr> \r\n                <td>&nbsp;</td>\r\n                <td><font face="$pollvars[font_face]" size="1">$pollvars[total_text]: \r\n                 <font color="#990000">$total_votes</font><br>\r\n                 $COMMENT?</font></td>\r\n              </tr>\r\n            </table>\r\n          </td>\r\n        </tr>\r\n      </table>\r\n    </td>\r\n  </tr>\r\n</table>');
+INSERT INTO `enquete_templates` VALUES (28, 4, 'comment', '<table border="0" cellspacing="0" cellpadding="1" align="center" bgcolor="#666699">\r\n  <tr align="center">\r\n    <td>\r\n     <style type="text/css">\r\n      <!--\r\n       .button {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}\r\n       .textarea {  font-family: "MS Sans Serif"; font-size: 9pt; width: 195px}\r\n       .input {  width: 195px}\r\n      -->\r\n    </style><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>Submit Your Comment</b></font></td>\r\n  </tr>\r\n  <tr>\r\n    <td>\r\n      <table border="0" cellspacing="0" cellpadding="5" align="center" bgcolor="#FFFFFF" width="200">\r\n        <tr>\r\n          <td width="149">\r\n            <form method="post" action="$this->form_forward">\r\n              <table border="0" cellspacing="0" cellpadding="2" bgcolor="" align="center">\r\n                <tr>\r\n                  <td class="td1" height="40"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="1">$question</font></b></td>\r\n                </tr>\r\n                <tr>\r\n                  <td class="td1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Name:</font><br>\r\n                    <input type="text" name="name" maxlength="25" class="input" size="23">\r\n                  </td>\r\n                </tr>\r\n                <tr>\r\n                  <td class="td1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">e-mail:</font><br>\r\n                    <input type="text" name="email" size="23" maxlength="50" class="input">\r\n                  </td>\r\n                </tr>\r\n                <tr>\r\n                  <td class="td1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Comment(*):</font><br>\r\n                    <font face="MS Sans Serif" size="1">\r\n                    <textarea name="message" cols="19" wrap="VIRTUAL" rows="6" class="textarea"></textarea>\r\n                    </font>\r\n                  </td>\r\n                </tr>\r\n                <tr valign="top">\r\n                  <td>\r\n                    <input type="submit" value="Submit" class="button">\r\n                    <input type="reset" value="Reset" class="button">\r\n                    <input type="hidden" name="action" value="add">\r\n                    <input type="hidden" name="id" value="$poll_id">\r\n                  </td>\r\n                </tr>\r\n              </table>\r\n            </form>\r\n          </td>\r\n        </tr>\r\n      </table>\r\n    </td>\r\n  </tr>\r\n</table>\r\n');
+INSERT INTO `enquete_templates` VALUES (29, 5, 'display_head', '<table width="450" border="0" cellspacing="0" cellpadding="2" bgcolor="#CCCCCC">\r\n  <tr>\r\n    <td align="center">\r\n     <style type="text/css">\r\n       <!--\r\n        .input { font-family: $pollvars[font_face]; font-size: 9pt}\r\n       -->\r\n      </style> \r\n      <table width="100%" border="0" cellspacing="0" cellpadding="3" bgcolor="#F6F6F6">\r\n        <tr align="center"> \r\n          <td colspan="2" height="40"><font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1"><b>$question</b></font></td>\r\n        </tr>\r\n        <tr align="center"> \r\n          <td colspan="2"> \r\n            <form method="post" action="$this->form_forward">\r\n              <table width="100%" border="0" cellspacing="0" cellpadding="1">');
+INSERT INTO `enquete_templates` VALUES (30, 5, 'display_loop', ' <tr> \r\n   <td width="11%" align="center"><input type="radio" name="option_id" value="$data[option_id]"></td>\r\n   <td width="89%"><font face="$pollvars[font_face]" size="1" color="$pollvars[font_color]">$data[option_text]</font></td>\r\n </tr>');
+INSERT INTO `enquete_templates` VALUES (31, 5, 'display_foot', '                <tr align="center" valign="bottom"> \r\n                  <td colspan="2"> \r\n                    <input type="submit" value="$pollvars[vote_button]" class="input" name="submit">\r\n                    <input type="hidden" name="action" value="vote">\r\n                    <input type="hidden" name="poll_ident" value="$poll_id">\r\n                  </td>\r\n                </tr>\r\n                <tr valign="bottom"> \r\n                  <td colspan="2" height="30" align="center"><font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1">[<a href="$this->form_forward?action=results&amp;poll_ident=$poll_id">$pollvars[result_text]</a>]</font></td>\r\n                </tr>\r\n              </table>\r\n            </form>\r\n          </td>\r\n        </tr>\r\n      </table>\r\n    </td>\r\n  </tr>\r\n</table>\r\n');
+INSERT INTO `enquete_templates` VALUES (32, 5, 'result_head', '<table width="450" border="0" cellspacing="0" cellpadding="2" bgcolor="#CCCCCC">\r\n  <tr>\r\n    <td align="center"> \r\n      <table width="100%" border="0" cellspacing="0" cellpadding="3" bgcolor="#F6F6F6">\r\n        <tr align="center"> \r\n          <td colspan="3" height="40"><font face="$pollvars[font_face]" size="1" color="#000000"><b>$question</b></font></td>\r\n        </tr>\r\n');
+INSERT INTO `enquete_templates` VALUES (33, 5, 'result_loop', '        <tr>\r\n          <td width="3%">&nbsp;</td>\r\n          <td><font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1">$option_text</font></td>\r\n          <td><font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1"><img src="$pollvars[base_gif]/$poll_color.gif" width="$img_width" height="$pollvars[img_height]"> $vote_percent % ($vote_count)</font></td>\r\n        </tr>\r\n');
+INSERT INTO `enquete_templates` VALUES (34, 5, 'result_foot', '        <tr> \r\n          <td colspan="3" valign="bottom" align="center"><b><font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1">$pollvars[total_text]: \r\n            $total_votes</font></b></td>\r\n        </tr>\r\n        <tr align="center"> \r\n          <td colspan="3" valign="top"><font face="$pollvars[font_face]" color="$pollvars[font_color]" size="1">$VOTE \r\n            <br>\r\n            $COMMENT</font></td>\r\n        </tr>\r\n        <tr align="right"> \r\n          <td colspan="3"><font face="$pollvars[font_face]" size="1"><a href="http://www.proxy2.de" target="_blank" title="Advanced Poll">Version $pollvars[poll_version]</a></font></td>\r\n        </tr>\r\n      </table>\r\n    </td>\r\n  </tr>\r\n</table>\r\n');
+INSERT INTO `enquete_templates` VALUES (35, 5, 'comment', '<table border="0" cellspacing="0" cellpadding="1" align="center" bgcolor="#666699">\r\n  <tr align="center">\r\n    <td>\r\n     <style type="text/css">\r\n      <!--\r\n       .button {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}\r\n       .textarea {  font-family: "MS Sans Serif"; font-size: 9pt; width: 195px}\r\n       .input {  width: 195px}\r\n      -->\r\n    </style><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>Send Your Comment</b></font></td>\r\n  </tr>\r\n  <tr>\r\n    <td>\r\n      <table border="0" cellspacing="0" cellpadding="5" align="center" bgcolor="#F3F3F3" width="200">\r\n        <tr>\r\n          <td width="149">\r\n            <form method="post" action="$this->form_forward">\r\n              <table border="0" cellspacing="0" cellpadding="2" bgcolor="" align="center">\r\n                <tr>\r\n                  <td class="td1" height="40"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="1">$question</font></b></td>\r\n                </tr>\r\n                <tr>\r\n                  <td class="td1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Name:</font><br>\r\n                    <input type="text" name="name" maxlength="25" class="input" size="23">\r\n                  </td>\r\n                </tr>\r\n                <tr>\r\n                  <td class="td1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">e-mail:</font><br>\r\n                    <input type="text" name="email" size="23" maxlength="50" class="input">\r\n                  </td>\r\n                </tr>\r\n                <tr>\r\n                  <td class="td1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Comment(*):</font><br>\r\n                    <font face="MS Sans Serif" size="1">\r\n                    <textarea name="message" cols="19" wrap="VIRTUAL" rows="6" class="textarea"></textarea>\r\n                    </font>\r\n                  </td>\r\n                </tr>\r\n                <tr valign="top">\r\n                  <td>\r\n                    <input type="submit" value="Submit" class="button">\r\n                    <input type="reset" value="Reset" class="button">\r\n                    <input type="hidden" name="action" value="add">\r\n                    <input type="hidden" name="id" value="$poll_id">\r\n                  </td>\r\n                </tr>\r\n              </table>\r\n            </form>\r\n          </td>\r\n        </tr>\r\n      </table>\r\n    </td>\r\n  </tr>\r\n</table>\r\n');
+INSERT INTO `enquete_templates` VALUES (36, 0, 'poll_comment', '<table border="0" cellspacing="1" cellpadding="2" width="450">\r\n  <tr bgcolor="#E4E4E4"> \r\n    <td bgcolor="#F2F2F2"><b><font size="1" face="Verdana, Arial, Helvetica, sans-serif">$data[name]</font></b> \r\n      <i><font size="1" face="Verdana, Arial, Helvetica, sans-serif">$data[email]</font></i> \r\n      - <font size="1" face="Verdana, Arial, Helvetica, sans-serif">$data[time]</font><br>\r\n      <font size="1" face="Arial, Helvetica, sans-serif">$data[host] - $data[browser]</font> \r\n    </td>\r\n  </tr>\r\n  <tr>\r\n    <td><font size="2" face="Verdana, Arial, Helvetica, sans-serif">$data[message]</font> \r\n    </td>\r\n  </tr>\r\n  <tr> \r\n    <td height="15">&nbsp;</td>\r\n  </tr>\r\n</table>\r\n');
+INSERT INTO `enquete_templates` VALUES (37, 0, 'poll_list', '<table border="0" cellspacing="0" cellpadding="4" width="450">\r\n  <tr> \r\n    <td width="80" valign="top"> ? <font size="2" face="Arial, Helvetica, sans-serif"><i>$data[timestamp]</i></font></td>\r\n    <td width="354"><font face="Arial, Helvetica, sans-serif" size="2"><a href="$PHP_SELF?poll_id=$data[poll_id]">$data[question]</a></font></td>\r\n  </tr>\r\n</table>\r\n');
+INSERT INTO `enquete_templates` VALUES (38, 0, 'poll_form', '<table border="0" cellspacing="0" cellpadding="0">\r\n  <tr> \r\n    <td> \r\n      <style type="text/css">\r\n      <!--\r\n       .button {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}\r\n       .poll_textarea {  font-family: "MS Sans Serif"; font-size: 9pt; width: 300px}\r\n       .poll_input {  width: 300px}\r\n      -->\r\n    </style>\r\n      <form method="post" action="$this->form_forward">\r\n        <table border="0" cellspacing="0" cellpadding="4">\r\n          <tr>\r\n            <td class="td1"><font color="#CC0000" face="Verdana, Arial, Helvetica, sans-serif" size="1"><b>$msg</b></font></td>\r\n          </tr>\r\n          <tr> \r\n            <td class="td1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Name:</font><br>\r\n              <input type="text" name="name" value="$comment[name]" maxlength="30" class="poll_input" size="25">\r\n            </td>\r\n          </tr>\r\n          <tr> \r\n            <td class="td1"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">E-mail:</font><br>\r\n              <input type="text" name="email" value="$comment[email]" size="25" maxlength="50" class="poll_input">\r\n            </td>\r\n          </tr>\r\n          <tr> \r\n            <td class="td1"> <font face="Verdana, Arial, Helvetica, sans-serif" size="1">Comment:</font><br>\r\n              <font face="MS Sans Serif" size="1"> \r\n              <textarea name="message" cols="25" wrap="VIRTUAL" rows="8" class="poll_textarea">$comment[message]</textarea>\r\n              </font> </td>\r\n          </tr>\r\n          <tr valign="top"> \r\n            <td> \r\n              <input type="submit" value="Submit" class="button" name="submit">\r\n              <input type="reset" value="Reset" class="button" name="reset">\r\n              <input type="hidden" name="action" value="add">\r\n              <input type="hidden" name="pcomment" value="$poll_id">\r\n            </td>\r\n          </tr>\r\n        </table>\r\n      </form>\r\n    </td>\r\n  </tr>\r\n</table>\r\n');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `enquete_templateset`
+-- 
+
+CREATE TABLE `enquete_templateset` (
+  `tplset_id` int(10) unsigned NOT NULL auto_increment,
+  `tplset_name` varchar(50) NOT NULL default '',
+  `created` datetime default '0000-00-00 00:00:00',
+  PRIMARY KEY  (`tplset_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+-- 
+-- Extraindo dados da tabela `enquete_templateset`
+-- 
+
+INSERT INTO `enquete_templateset` VALUES (1, 'default', '2005-06-03 00:49:38');
+INSERT INTO `enquete_templateset` VALUES (2, 'simple', '2005-06-03 00:49:38');
+INSERT INTO `enquete_templateset` VALUES (3, 'popup', '2005-06-03 00:49:38');
+INSERT INTO `enquete_templateset` VALUES (4, 'graphic', '2005-06-03 00:49:38');
+INSERT INTO `enquete_templateset` VALUES (5, 'plain', '2005-06-03 00:49:38');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `enquete_user`
+-- 
+
+CREATE TABLE `enquete_user` (
+  `user_id` smallint(5) NOT NULL auto_increment,
+  `username` varchar(30) NOT NULL default '',
+  `userpass` varchar(32) NOT NULL default '',
+  `session` varchar(32) NOT NULL default '',
+  `last_visit` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `enquete_user`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `estat_users`
+-- 
+
+CREATE TABLE `estat_users` (
+  `cod` tinyint(3) NOT NULL auto_increment,
+  `login` varchar(20) NOT NULL default '',
+  `senha` varchar(20) NOT NULL default '',
+  `nome` varchar(50) NOT NULL default '',
+  PRIMARY KEY  (`cod`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- Extraindo dados da tabela `estat_users`
+-- 
+
+INSERT INTO `estat_users` VALUES (1, 'Birex', '42363140', 'administrador');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `franquias`
+-- 
+
+CREATE TABLE `franquias` (
+  `id` int(3) NOT NULL auto_increment,
+  `responsavel` varchar(255) NOT NULL default '',
+  `endereco` varchar(255) NOT NULL default '',
+  `telefone` varchar(50) NOT NULL default '',
+  `cidade` varchar(200) NOT NULL default '',
+  `estado` varchar(20) NOT NULL default '',
+  `email` varchar(255) NOT NULL default '',
+  `imagem` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- Extraindo dados da tabela `franquias`
+-- 
+
+INSERT INTO `franquias` VALUES (1, 'Joao Valdir', '<adicionar comentário>', '<adicionar comentário>', 'SANTA CRUZ DO XINGU', 'MT', '<adicionar comentário>', 'fundo_topo01.gif');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `galeria`
+-- 
+
+CREATE TABLE `galeria` (
+  `id` int(3) NOT NULL auto_increment,
+  `id_cat` char(3) NOT NULL default '',
+  `id_franquia` char(3) NOT NULL default '',
+  `nome` varchar(255) NOT NULL default '',
+  `data` date NOT NULL default '0000-00-00',
+  `local` varchar(255) NOT NULL default '',
+  `pasta` varchar(255) NOT NULL default '',
+  `foto01` varchar(255) NOT NULL default '',
+  `destaque` char(1) NOT NULL default 'S',
+  `logo` enum('S','N') NOT NULL default 'S',
+  `perfil` text NOT NULL,
+  `por` varchar(255) NOT NULL default '',
+  `fundo` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+-- 
+-- Extraindo dados da tabela `galeria`
+-- 
+
+INSERT INTO `galeria` VALUES (1, '1', '1', 'Galeria de Pássaros - Teste', '2013-11-26', 'Santa Cruz do Xingu', '26_11_2013_18_08_54_30_', '003.jpg', 'S', 'S', '', '', '');
+INSERT INTO `galeria` VALUES (2, '1', '1', 'Galeria de Carros - Teste', '2013-11-26', 'Santa Cruz do Xingu', '26_11_2013_18_15_47_30_', '012.jpg', 'S', 'S', '', '', '');
+INSERT INTO `galeria` VALUES (3, '7', '1', 'Recebimento de Motoniveladora', '2013-12-04', 'Santa Cruz do Xingu', '04_12_2013_09_50_10_31_', 'capa.jpg', 'S', 'S', '', '', '');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `galeria_cat`
+-- 
+
+CREATE TABLE `galeria_cat` (
+  `id` int(3) NOT NULL auto_increment,
+  `categoria` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+-- 
+-- Extraindo dados da tabela `galeria_cat`
+-- 
+
+INSERT INTO `galeria_cat` VALUES (1, 'Geral');
+INSERT INTO `galeria_cat` VALUES (2, 'Saúde');
+INSERT INTO `galeria_cat` VALUES (3, 'Educação');
+INSERT INTO `galeria_cat` VALUES (4, 'Ação Social');
+INSERT INTO `galeria_cat` VALUES (5, 'Esportes');
+INSERT INTO `galeria_cat` VALUES (6, 'Camara Municipal');
+INSERT INTO `galeria_cat` VALUES (7, 'Obras Gerais');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `guia_cat`
+-- 
+
+CREATE TABLE `guia_cat` (
+  `id` int(6) NOT NULL auto_increment,
+  `nome` varchar(255) NOT NULL default '',
+  `icone` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `guia_cat`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `guia_registros`
+-- 
+
+CREATE TABLE `guia_registros` (
+  `id` int(9) NOT NULL auto_increment,
+  `id_cat` varchar(6) NOT NULL default '',
+  `id_subcat` varchar(6) NOT NULL default '',
+  `nome` varchar(255) NOT NULL default '',
+  `endereco` varchar(255) NOT NULL default '',
+  `bairro` varchar(255) NOT NULL default '',
+  `cidade` varchar(255) NOT NULL default '',
+  `estado` varchar(255) NOT NULL default '',
+  `cep` varchar(9) NOT NULL default '',
+  `fone` varchar(255) NOT NULL default '',
+  `site` varchar(255) NOT NULL default '',
+  `email` varchar(255) NOT NULL default '',
+  `descricao` varchar(255) NOT NULL default '',
+  `status` enum('S','N') NOT NULL default 'N',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `guia_registros`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `guia_subcat`
+-- 
+
+CREATE TABLE `guia_subcat` (
+  `id` int(6) NOT NULL auto_increment,
+  `id_cat` varchar(6) NOT NULL default '',
+  `nome` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `guia_subcat`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `leis`
+-- 
+
+CREATE TABLE `leis` (
+  `id` int(9) NOT NULL auto_increment,
+  `id_categoria` varchar(25) collate latin1_general_ci default NULL,
+  `nome` varchar(255) collate latin1_general_ci NOT NULL default '',
+  `descricao` text collate latin1_general_ci NOT NULL,
+  `arquivo` varchar(255) collate latin1_general_ci NOT NULL,
+  `visitas` varchar(25) collate latin1_general_ci default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=2 ;
+
+-- 
+-- Extraindo dados da tabela `leis`
+-- 
+
+INSERT INTO `leis` VALUES (1, '1', 'Lei Nº 0001/2001', 'Dispõe sobre teste de cadastro de Leis', 'LEI_1386375772.pdf', '');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `leis_categorias`
+-- 
+
+CREATE TABLE `leis_categorias` (
+  `id` int(5) NOT NULL auto_increment,
+  `categoria` varchar(30) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+-- 
+-- Extraindo dados da tabela `leis_categorias`
+-- 
+
+INSERT INTO `leis_categorias` VALUES (1, 'Lei Ordinária');
+INSERT INTO `leis_categorias` VALUES (2, 'Lei Complementar');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `menu`
+-- 
+
+CREATE TABLE `menu` (
+  `id` int(3) NOT NULL auto_increment,
+  `nome` varchar(20) NOT NULL default '',
+  `url` varchar(255) NOT NULL default '',
+  `subcat` char(3) NOT NULL default 'sim',
+  `target` varchar(15) NOT NULL default '_top',
+  `nivel` char(2) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=503 ;
+
+-- 
+-- Extraindo dados da tabela `menu`
+-- 
+
+INSERT INTO `menu` VALUES (10, 'Notícias', '', 'sim', '_top', '1');
+INSERT INTO `menu` VALUES (90, 'Usuários', '', 'sim', '_top', '1');
+INSERT INTO `menu` VALUES (99, 'Configurações', '?pg=gal-configurar.php&pag=form&id=1', 'nao', '_top', '1');
+INSERT INTO `menu` VALUES (100, 'Sair', 'logout.php', 'nao', '_top', '1');
+INSERT INTO `menu` VALUES (190, 'Sair', 'logout.php', 'nao', '_top', '2');
+INSERT INTO `menu` VALUES (170, 'Usuários', '', 'sim', '_top', '2');
+INSERT INTO `menu` VALUES (92, 'NewsLetter', '', 'sim', '_top', '1');
+INSERT INTO `menu` VALUES (172, 'NewsLetter', '', 'sim', '_top', '2');
+INSERT INTO `menu` VALUES (191, 'Notícias', '', 'sim', '_top', '-1');
+INSERT INTO `menu` VALUES (192, 'Serviços', '', 'sim', '_top', '-1');
+INSERT INTO `menu` VALUES (193, 'Entretenimento', '', 'sim', '_top', '-1');
+INSERT INTO `menu` VALUES (3, 'Finançeiro', '', 'sim', '_top', '1');
+INSERT INTO `menu` VALUES (80, 'Mural de Recados', '', 'sim', '_top', '1');
+INSERT INTO `menu` VALUES (50, 'Galeria de Imagem', '', 'sim', '_top', '1');
+INSERT INTO `menu` VALUES (120, 'Galeria de Imagem', '', 'sim', '_top', '2');
+INSERT INTO `menu` VALUES (5, 'Conteúdo', '', 'sim', '_top', '1');
+INSERT INTO `menu` VALUES (105, 'Conteúdo', '', 'sim', '_top', '2');
+INSERT INTO `menu` VALUES (165, 'Mural de Recados', '', 'sim', '_top', '2');
+INSERT INTO `menu` VALUES (55, 'Slide Destaques', '', 'sim', '_top', '1');
+INSERT INTO `menu` VALUES (2, 'Cidade', '', 'sim', '_self', '1');
+INSERT INTO `menu` VALUES (4, 'Enquetes', '', 'sim', '_top', '1');
+INSERT INTO `menu` VALUES (1, 'Videos', '', 'sim', '_top', '1');
+INSERT INTO `menu` VALUES (6, 'Agenda', '', 'sim', '_top', '1');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `menu_sub`
+-- 
+
+CREATE TABLE `menu_sub` (
+  `id` int(3) NOT NULL auto_increment,
+  `id_menu` char(3) NOT NULL default '',
+  `nome` varchar(30) NOT NULL default '',
+  `url` varchar(255) NOT NULL default '',
+  `target` varchar(15) NOT NULL default '_top',
+  `nivel` char(2) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=804 ;
+
+-- 
+-- Extraindo dados da tabela `menu_sub`
+-- 
+
+INSERT INTO `menu_sub` VALUES (27, '70', 'Listar Parceiros', '?pg=../estrutura/banners/ban_lista.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (26, '70', 'Cadastrar Parceiros', '?pg=../estrutura/banners/ban_cadastra_form.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (28, '70', 'Ver Estatísticas', '?pg=../estrutura/banners/ban_estatisticas_geral.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (5, '90', 'Cadastrar Usuários', '?pg=../estrutura/usuarios/cadastrar_form.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (6, '90', 'Listar Administradores', '?pg=../estrutura/usuarios/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (7, '80', 'Listar Recados', '?pg=../estrutura/mural/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (10, '10', 'Cadastrar Notícia', '?pg=../estrutura/noticias/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (11, '10', 'Listar Notícias', '?pg=../estrutura/noticias/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (300, '1', 'Cadastrar Video', '?pg=../estrutura/player/admin/gal-cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (14, '50', 'Cadastrar Evento', '?pg=../estrutura/galeria/admin/gal-cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (15, '50', 'Listar Eventos', '?pg=../estrutura/galeria/admin/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (19, '110', 'Cadastrar Agenda', '?pg=../estrutura/agenda/cadastrar.php', '_top', '2');
+INSERT INTO `menu_sub` VALUES (20, '110', 'Listar Agenda', '?pg=../estrutura/agenda/listar.php', '_top', '2');
+INSERT INTO `menu_sub` VALUES (21, '130', 'Cadastrar Destaque', '?pg=../estrutura/destaques/cadastrar.php', '_top', '2');
+INSERT INTO `menu_sub` VALUES (22, '130', 'Listar Destaques', '?pg=../estrutura/destaques/listar.php', '_top', '2');
+INSERT INTO `menu_sub` VALUES (23, '120', 'Cadastrar Evento', '?pg=../estrutura/galeria/admin/gal-cadastrar.php', '_top', '2');
+INSERT INTO `menu_sub` VALUES (24, '120', 'Listar Eventos', '?pg=../estrutura/galeria/admin/listar.php', '_top', '2');
+INSERT INTO `menu_sub` VALUES (25, '90', 'Listar Usuarios Vip', '?pg=../estrutura/usuarios_vip/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (29, '50', 'Listar Fotos', '?pg=../estrutura/galeria/admin/listar_fotos.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (30, '120', 'Listar Fotos', '?pg=../estrutura/galeria/admin/listar_fotos.php', '_top', '2');
+INSERT INTO `menu_sub` VALUES (31, '170', 'Listar Usuarios Vip', '?pg=../estrutura/usuarios_vip/listar.php', '_top', '2');
+INSERT INTO `menu_sub` VALUES (32, '165', 'Listar Recados', '?pg=../estrutura/mural/listar.php', '_top', '2');
+INSERT INTO `menu_sub` VALUES (34, '6', 'Cadastrar Agenda', '?pg=../estrutura/agenda/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (801, '10', 'Cadastrar Noticia Urgente', '?pg=../estrutura/urgente/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (36, '6', 'Listar Agenda', '?pg=../estrutura/agenda/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (37, '70', 'Cadastrar Pop-Up', '?pg=../estrutura/banners_popup/cadastra_form.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (38, '70', 'Listar Pop-Up`s', '?pg=../estrutura/banners_popup/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (803, '105', 'Teste', '?pg=teste', '_top', '1');
+INSERT INTO `menu_sub` VALUES (45, '77', 'Cadastrar Enquete', '?pg=../estrutura/enquetes/cadastrar_form.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (46, '163', 'Cadastrar Enquete', '?pg=../estrutura/enquetes/cadastrar_form.php', '_top', '2');
+INSERT INTO `menu_sub` VALUES (47, '77', 'Listar Enquetes', '?pg=../estrutura/enquetes/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (48, '163', 'Listar Enquetes', '?pg=../estrutura/enquetes/listar.php', '_top', '2');
+INSERT INTO `menu_sub` VALUES (49, '92', 'Listar Assinantes', '?pg=../estrutura/newsletter/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (50, '92', 'Enviar NewsLetter', '?pg=../estrutura/newsletter/enviar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (51, '172', 'Listar Assinantes', '?pg=../estrutura/newsletter/listar.php', '_top', '2');
+INSERT INTO `menu_sub` VALUES (52, '172', 'Enviar NewsLetter', '?pg=../estrutura/newsletter/enviar.php', '_top', '2');
+INSERT INTO `menu_sub` VALUES (802, '191', 'CAMARA MUNICIPAL', '?pg=noticias-camaramunicipal', '_self', '1');
+INSERT INTO `menu_sub` VALUES (344, '342', 'Listar Destaques', '?pg=../estrutura/destaques-15/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (151, '191', 'NOTÍCIAS GERAIS', '?pg=noticias', '_self', '1');
+INSERT INTO `menu_sub` VALUES (341, '339', 'Listar Destaques', '?pg=../estrutura/destaques-14/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (384, '191', 'SAÚDE', '?pg=noticias-saude', '_self', '1');
+INSERT INTO `menu_sub` VALUES (347, '345', 'Listar Destaques', '?pg=../estrutura/destaques-16/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (346, '345', 'Cadastrar Destaques ', '?pg=../estrutura/destaques-16/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (343, '342', 'Cadastrar Destaques', '?pg=../estrutura/destaques-15/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (94, '10', 'Cadastrar Categoria', '?pg=../estrutura/noticias/categoria_add_form.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (95, '10', 'Listar Categorias', '?pg=../estrutura/noticias/categoria_lista.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (106, '5', 'Listar Conteúdos', '?pg=../estrutura/conteudo/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (107, '105', 'Cadastrar Conteúdo', '?pg=../estrutura/conteudo/cadastrar_form.php', '_top', '2');
+INSERT INTO `menu_sub` VALUES (105, '5', 'Cadastrar Conteúdo', '?pg=../estrutura/conteudo/cadastrar_form.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (108, '105', 'Listar Conte?dos', '?pg=../estrutura/conteudo/listar.php', '_top', '2');
+INSERT INTO `menu_sub` VALUES (109, '50', 'Enviar Fotos', '?pg=../estrutura/galeria/admin/enviar_fotos_form.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (110, '120', 'Enviar Fotos', '?pg=../estrutura/galeria/admin/enviar_fotos_form.php', '_top', '2');
+INSERT INTO `menu_sub` VALUES (118, '55', 'Cadastrar Destaques', '?pg=../estrutura/destaques.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (340, '339', 'Cadastrar Destaques', '?pg=../estrutura/destaques-14/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (175, '2', 'Cadastrar Franquia', '?pg=../estrutura/franquias/cadastrar.php', '_self', '1');
+INSERT INTO `menu_sub` VALUES (176, '2', 'Listar Franquias', '?pg=../estrutura/franquias/listar.php', '_self', '1');
+INSERT INTO `menu_sub` VALUES (199, '191', 'ESPORTES', '?pg=noticias-esportes', '_self', '1');
+INSERT INTO `menu_sub` VALUES (200, '191', 'EDUCAÇÃO', '?pg=noticias-educacao', '_self', '1');
+INSERT INTO `menu_sub` VALUES (201, '191', 'DESTAQUES', '?pg=noticias-destaques', '_self', '1');
+INSERT INTO `menu_sub` VALUES (202, '191', 'OBRAS GERAIS', '?pg=noticias-obras', '_self', '1');
+INSERT INTO `menu_sub` VALUES (203, '191', 'MUNICÍPIO', '?pg=noticias-municipio', '_self', '1');
+INSERT INTO `menu_sub` VALUES (204, '191', 'CULTURA', '?pg=noticias-cultura', '_self', '1');
+INSERT INTO `menu_sub` VALUES (230, '4', 'Cadastrar/Editar/Excluir', '?pg=../estrutura/enquetes/cadastra.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (226, '3', 'Cadastrar', '?pg=../estrutura/videos/form_cadvideos.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (2, '10', 'Listar Notícia Urgente', '?pg=../estrutura/urgente/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (302, '300', 'Cadastrar Destaques', '?pg=../estrutura/destaques-2/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (303, '300', 'Listar Destaques', '?pg=../estrutura/destaques-2/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (304, '301', 'Cadastrar Destaques', '?pg=../estrutura/destaques-3/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (305, '301', 'Listar Destaques', '?pg=../estrutura/destaques-3/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (307, '306', 'Cadastrar Destaques', '?pg=../estrutura/destaques-4/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (308, '306', 'Listar Destaques', '?pg=../estrutura/destaques-4/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (310, '309', 'Cadastrar Destaque ', '?pg=../estrutura/destaques-5/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (311, '309', 'Listar Destaques', '?pg=../estrutura/destaques-5/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (313, '312', 'Cadastrar Destaque', '?pg=../estrutura/destaques-6/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (314, '312', 'Listar Destaque', '?pg=../estrutura/destaques-6/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (316, '315', 'Cadastrar Destaques', '?pg=../estrutura/destaques-7/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (317, '315', 'Listar Destaques', '?pg=../estrutura/destaques-7/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (319, '318', 'Cadastrar Destaques', '?pg=../estrutura/destaques-8/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (320, '318', 'Listar Destaques', '?pg=../estrutura/destaques-8/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (322, '321', 'Cadastrar Video', '?pg=../estrutura/videos-you/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (323, '321', 'Listar Video', '?pg=../estrutura/videos-you/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (325, '324', 'Cadastrar Destaques', '?pg=../estrutura/destaques-9/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (326, '324', 'Listar Destaques', '?pg=../estrutura/destaques-9/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (328, '327', 'Cadastrar Destaques', '?pg=../estrutura/destaques-10/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (329, '327', 'Listar Destaques', '?pg=../estrutura/destaques-10/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (331, '330', 'Cadastrar Destaques', '?pg=../estrutura/destaques-11/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (332, '330', 'Listar Destaques', '?pg=../estrutura/destaques-11/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (334, '333', 'Cadastrar Destaques', '?pg=../estrutura/destaques-12/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (335, '333', 'Listar Destaques', '?pg=../estrutura/destaques-12/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (337, '336', 'Cadastrar Destaques', '?pg=../estrutura/destaques-13/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (338, '336', 'Listar Destaques', '?pg=../estrutura/destaques-13/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (349, '348', 'Cadastrar Destaques', '?pg=../estrutura/destaques-17/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (350, '348', 'Listar Destaques', '?pg=../estrutura/destaques-17/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (352, '351', 'Cadastrar Destaques', '?pg=../estrutura/destaques-18/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (353, '351', 'Listar Destaques', '?pg=../estrutura/destaques-18/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (355, '354', 'Cadastrar Destaques', '?pg=../estrutura/destaques-19/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (356, '354', 'Listar Destaques', '?pg=../estrutura/destaques-19/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (358, '357', 'Cadastrar Destaques', '?pg=../estrutura/destaques-20/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (359, '357', 'Listar Destaques', '?pg=../estrutura/destaques-20/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (361, '360', 'Cadastrar Destaques', '?pg=../estrutura/destaques-21/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (362, '360', 'Listar Destaques', '?pg=../estrutura/destaques-20/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (364, '363', 'Cadastrar Destaques', '?pg=../estrutura/destaques-22/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (365, '363', 'Listar Destaques', '?pg=../estrutura/destaques-22/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (367, '366', 'Cadastrar Destaques', '?pg=../estrutura/destaques-23/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (368, '366', 'Listar Destaques', '?pg=../estrutura/destaques-23/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (370, '369', 'Cadastrar Destaques', '?pg=../estrutura/destaques-24/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (371, '369', 'Listar Destaques', '?pg=../estrutura/destaques-24/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (373, '372', 'Cadastrar Destaques', '?pg=../estrutura/destaques-25/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (374, '372', 'Listar Destaques', '?pg=../estrutura/destaques-25/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (376, '375', 'Cadastrar Destaques', '?pg=../estrutura/destaques-26/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (377, '375', 'Listar Destaques', '?pg=../estrutura/destaques-26/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (379, '378', 'Cadastrar Destaques', '?pg=../estrutura/destaques-27/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (380, '378', 'Listar Destaques', '?pg=../estrutura/destaques-27/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (381, '10', 'Ver Comentários', '?pg=../estrutura/noticias/comentarios_lista.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (382, '381', 'Cadastrar Videos', '?pg=../estrutura/videos-not/cadastrar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (383, '381', 'Listar Videos', '?pg=../estrutura/videos-not/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (385, '193', 'FOTOS', '?pg=galeria-imagem', '_self', '1');
+INSERT INTO `menu_sub` VALUES (225, '3', 'Listar ', '?pg=../estrutura/videos/videos_lista.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (301, '1', 'Listar Videos', '?pg=../estrutura/player/admin/listar.php', '_top', '1');
+INSERT INTO `menu_sub` VALUES (800, '193', 'VÍDEOS', '?pg=videos', '_self', '1');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `mural`
+-- 
+
+CREATE TABLE `mural` (
+  `id` int(5) unsigned zerofill NOT NULL auto_increment,
+  `de` varchar(255) NOT NULL default '',
+  `para` varchar(255) NOT NULL default '',
+  `mensagem` text NOT NULL,
+  `data` datetime NOT NULL default '0000-00-00 00:00:00',
+  `status` char(3) NOT NULL default 'N',
+  `ip` varchar(255) NOT NULL default '127.0.001',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- Extraindo dados da tabela `mural`
+-- 
+
+INSERT INTO `mural` VALUES (00001, 'Administração do Site', 'Usuários e Visitantes', 'Obrigado pela visita em nosso portal, favor deixar o seu voto na enquete acima...', '2013-11-26 00:00:00', 'S', '127.0.001');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `noticias_categorias`
+-- 
+
+CREATE TABLE `noticias_categorias` (
+  `id` int(3) NOT NULL auto_increment,
+  `nome` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+-- 
+-- Extraindo dados da tabela `noticias_categorias`
+-- 
+
+INSERT INTO `noticias_categorias` VALUES (1, 'Saúde');
+INSERT INTO `noticias_categorias` VALUES (2, 'Esportes');
+INSERT INTO `noticias_categorias` VALUES (3, 'Destaques');
+INSERT INTO `noticias_categorias` VALUES (4, 'Educação');
+INSERT INTO `noticias_categorias` VALUES (5, 'Cultura');
+INSERT INTO `noticias_categorias` VALUES (6, 'Município');
+INSERT INTO `noticias_categorias` VALUES (7, 'Camara Municipal');
+INSERT INTO `noticias_categorias` VALUES (8, 'Obras Gerais');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `noticias_comentarios`
+-- 
+
+CREATE TABLE `noticias_comentarios` (
+  `id` int(3) NOT NULL auto_increment,
+  `id_noticia` varchar(5) NOT NULL default '',
+  `nome` varchar(50) NOT NULL default '',
+  `cidade` varchar(255) NOT NULL default '',
+  `data` datetime NOT NULL default '0000-00-00 00:00:00',
+  `comentarios` text NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `noticias_comentarios`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `noticias_dados`
+-- 
+
+CREATE TABLE `noticias_dados` (
+  `id` int(5) NOT NULL auto_increment,
+  `idcat` char(3) NOT NULL default '',
+  `nome` varchar(30) NOT NULL default '',
+  `email` varchar(80) default NULL,
+  `data` date NOT NULL default '0000-00-00',
+  `hora` time NOT NULL default '00:00:00',
+  `titulo` text NOT NULL,
+  `subtitulo` text,
+  `texto` text NOT NULL,
+  `foto01` varchar(50) default NULL,
+  `fotos_extras` char(3) NOT NULL default 'nao',
+  `alinhamento_foto` varchar(5) NOT NULL default 'left',
+  `borda` char(3) NOT NULL default '',
+  `creditos_foto` varchar(255) NOT NULL default 'Fl?vio Manoel',
+  `destaque` char(3) NOT NULL default 'nao',
+  `largura_foto` char(3) NOT NULL default '405',
+  `altura_foto` char(3) NOT NULL default '',
+  `cont` bigint(20) NOT NULL default '0',
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+
+-- 
+-- Extraindo dados da tabela `noticias_dados`
+-- 
+
+INSERT INTO `noticias_dados` VALUES (2, '3', 'João Valdir de A. Filho', 'joaovaldir21@gmail.com', '2013-11-21', '17:38:59', 'Comércio não deve abrir amanhã no Norte Araguaia', 'Quem abrir o comércio poderá pagar multa', 'O comércio do Norte Araguaia não deve abrir nesta quarta, 20, feriado da Consciência Negra. Decretado em 2002 através de lei estadual. Mato Grosso é um dos sete estados que estabeleceram a homenagem integralmente, nos demais apenas os funcionários públicos são beneficiados.\r\n\r\nPor aqui o comerciante que quiser abrir as portas terá de cumprir alguns requisitos, de acordo com a Câmara de Dirigentes Lojistas (CDL), é preciso retirar alvará especial na prefeitura, pagar hora extra dobrada e ainda conceder uma folga para os funcionários que trabalharem.\r\n\r\nDe acordo com Ediene Silva, funcionária da CDL, o comércio que abrir sem cumprir com os requisitos poderá ser multado pelo Ministério do Trabalho, além dos fiscais que estarão nas ruas o funcionário pode denunciar anonimamente na agência do órgão ou por telefone.\r\n\r\nA expectativa é que supermercados, farmácias e restaurantes funcionem na quarta-feira, mesmo que em horário reduzido, lembrando que mesmo assim deverão pagar integralmente os direitos dos trabalhadores.\r\n\r\nOs órgãos públicos e bancos estaram fechados,  porém algumas escolas estão tendo aulas, as escolas estaduais por exemplo estão aproveitando o feriado para repor aulas, devido a greve que durou cerca de 60 dias.', 'comercios.jpeg', 'nao', 'left', '0', 'Administrador do site', 'sim', '', '', 0);
+INSERT INTO `noticias_dados` VALUES (3, '3', 'João Valdir de A. Filho', 'joaovaldir21@gmail.com', '2013-12-02', '09:46:06', 'Santa Cruz do Xingu aprova indicação para criação do Hino Oficial', 'O Hino deve ser escolhido através de Concurso realizado pela Prefeitura Municipal', 'A Câmara de Vereadores de Santa Cruz do Xingu, aprovou em maio deste ano a indicação feita pelo Vereador Aleriano Rodrigues da Silva do PSD que pede ao Executivo que crie um concurso para a criação do Hino Oficial da cidade de Santa Cruz do Xingu.\r\n\r\nAtravés do concurso, serão escolhidas a letra e a música que representarão o município.\r\n\r\nNa justificativa, o vereador disse que o hino, junto com a bandeira e o brasão, são símbolos representativos da cultura e história local, e que a inexistência abdica o amor dos cidadãos com Santa Cruz do Xingu.\r\n\r\nA expectativa é de que o hino seja  produzido, escolhido e oficializado em 2014.', 'Brazão.jpg', 'nao', 'left', '0', 'Administrador do site', 'nao', '', '', 1);
+INSERT INTO `noticias_dados` VALUES (4, '3', 'João Valdir de A. Filho', 'joaovaldir21@gmail.com', '2013-12-02', '10:16:13', 'Prefeito de Santa Cruz do Xingu assina convênio para construção de Rodoviária', 'Expectativa é de que Rodoviária em Santa Cruz do Xingu seja concluída em 2014', 'O prefeito de Santa Cruz do Xingu Marcos de Sá assinou na última segunda-feira 25 de novembro o convênio para construção do Terminal Rodoviário do Município.\r\n\r\nA cerimonia ocorreu em Cuiabá, no escritório do senador Jayme Campos, que destinou uma emenda de R$ 250 mil para a obra. O recurso virá do Ministério do Turismo, mas ainda não há previsão para liberação e inicio das obras.\r\n\r\nA expectativa é que o terminal seja concluído ainda em 2014, o prefeito Marcos de Sá ressaltou na oportunidade que está é uma reivindicação antiga da população. “Além do conforto para os moradores o novo terminal vai melhorar a qualidade de nossos serviços para quem visita nosso município” disse o prefeito.', 'Convenio rodoviária.jpeg', 'nao', 'left', '0', 'Administrador do site', 'nao', '', '', 0);
+INSERT INTO `noticias_dados` VALUES (5, '3', 'João Valdir de A. Filho', 'joaovaldir21@gmail.com', '2013-12-02', '10:22:09', 'Prefeito de Santa Cruz do Xingu assina contrato de repasse para Asfaltamento de zona urbana do município', 'Contranto de repasse no valor de 400.000,00', '        Em Cuiabá, o prefeito de Santa Cruz do Xingu assina com a Caixa Econômica Federal contrato de repass para recebimento de R$ 400.000,00 para asfaltamento da zona urbana de Santa Cruz do Xingu. Agradecimento aos Senadores Blairo Maggi e Cidinho, Camara Municipal De Santa Cruz Do Xingu, em especial ao partido do PR e seus representantes na câmara municipal; vereadores Thiago Gervásio e Edson Botelho. Estamos no caminho certo.', 'contrato repasse Caixa.jpg', 'nao', 'left', '0', 'Administrador do site', 'nao', '', '', 5);
+INSERT INTO `noticias_dados` VALUES (10, '4', 'João Valdir de A. Filho', 'joaovaldir21@gmail.com', '2013-12-02', '11:31:06', 'Diretor do IFMT Campus Confresa confirma a abertura de 40 (quarenta) vagas através do Pronatec', 'Prestes a realizar o sonho de nossos estudantes santacruzenses', 'Prestes a realizar o sonho de nossos estudantes santacruzenses que concluíram o ensino médio, o prefeito de Marcos de Sá tem a satisfação de informar que recebeu um email do Diretor do IFMT Campus Confresa confirmando a abertura de 40 (quarenta) vagas através do Pronatec, para o curso de "Técnico em Agropecuária" com enfase na agricultura familiar, em Santa Cruz do Xingu.\r\n\r\nParceria IFMT, Prefeitura Municipal/ Sec. Educação e Escola Estadual Santa Cruz. \r\n\r\nPrevisão de início das aulas para novembro de 2013. Mais informações com Secretária Rosangela Pinto Figueiredo Figueiredo. Agradecimentos ao Dep. Valtenir Pereira, Reitor do IFMT Bispo, Diretor do IFMT Campus Confresa Willian, equipe da Secretaria municipal de Educação e câmara Camara Municipal De Santa Cruz Do Xingu.\r\n', 'ifet Confresa.jpg', 'nao', 'left', '0', 'Administrador do site', 'sim', '480', '350', 1);
+INSERT INTO `noticias_dados` VALUES (7, '1', 'João Valdir de A. Filho', 'joaovaldir21@gmail.com', '2013-12-02', '10:52:03', 'Santa Cruz do Xingu foi contemplada com uma UBS tipo I (PSF)', 'Conforme portaria MS 1.380 de 09/07/13 o município foi contemplado com uma UBS tipo I', 'Santa Cruz do Xingu foi contemplada com uma UBS tipo I (PSF). Valor R$ : 408.000,00. Conforme portaria MS 1.380 de 09/07/13.\r\n\r\nAgradecimentos a Camara Municipal De Santa Cruz Do Xingu, Dep. Federal Pedro Henry, equipe da Secretaria Municipal de Saude e gerenciamento de convenios da Prefeitura Municipal. Obrigado pela contribuição de todos. Juntos somos fortes e conseguiremos melhorar a vida de nosso munícipes.', 'Prefeitura Municipal.jpg', 'nao', 'left', '0', 'Administrador do site', 'nao', '480', '350', 0);
+INSERT INTO `noticias_dados` VALUES (8, '3', 'João Valdir de A. Filho', 'joaovaldir21@gmail.com', '2013-12-02', '11:11:31', 'MT Habita Mais e lançado em Santa Cruz do Xingu', 'MT Habita Mais e lançado em Santa Cruz do Xingu', 'O Vice Governador Chico Daltro lança o MT Habita mais em nosso municipio, contando com a presença do Suplente Deputado Leandro e o Presidente da Empaer', 'Programa habita mais.jpg', 'nao', 'left', '0', 'Administrador do site', 'nao', '480', '350', 0);
+INSERT INTO `noticias_dados` VALUES (9, '1', 'João Valdir de A. Filho', 'joaovaldir21@gmail.com', '2013-12-02', '11:24:10', 'Prefeito assina convênio de R$ 10.000,00 para compra de cestas básicas para Natal', 'convênio de R$ 10.000,00 para compra de 200 cestas básicas para Natal', 'Em Cuiabá, com vereador Cleder Gaboardi, na Secretaria Estadual de Administração, o prefeito municipal Marcos de Sá assina Convênio de R$ 10.000,00 para compra de 200 cestas básicas para o Natal.\r\n\r\nAgradecimentos à Secretária de estado de Trabalho e Assistência Social Roseli Barbosa, Camara Municipal De Santa Cruz do Xingu, equipe de convênios e Secretaria de Assistência Social.', 'Convenio cesta basica.jpg', 'nao', 'left', '0', 'Administrador do site', 'sim', '480', '350', 0);
+INSERT INTO `noticias_dados` VALUES (11, '2', 'João Valdir de A. Filho', 'joaovaldir21@gmail.com', '2013-12-02', '11:38:09', 'Messi confirma sondagens de outros times, mas diz que fica no Barça', 'Messi confirma sondagens de outros times, mas diz que fica no Barça', 'Após especulações durante a última semana, o argentino Lionel Messi admitiu que foi procurado por outros clubes europeus, mas garantiu a permanência no Barcelona. O craque ainda afirmou que se sente bem na equipe. \r\n "Sinto-me honrado por toda vez que meu nome é relacionado a outros grandes clubes. É verdade que muitos times mostraram interesse em mim. Minha posição não mudou. Ainda acho que o futebol daqui combina comigo, e estar no Barcelona é o sonho da minha vida", afirmou o jogador em entrevista ao jornal holandês De Telegraaf.  \r\nMessi revelou que o momento não é dos melhores por causa até das lesões que têm sofrido. Apesar disso, o argentino se mostrou confiante com uma mudança no começo do ano de 2014. "Nesta temporada, as coisas não estão indo bem, mas depois do Natal espero estar pronto".  \r\nUm dos motivos para o início das especulações seria o interesse da marca de materiais esportivos que patrocina Messi em colocá-lo em um time que também tivesse o apoio dessa empresa. Atualmente, o uniforme do Barcelona é da concorrente da qual o argentino é garoto-propaganda.\r\n', 'Messi.jpg', 'nao', 'left', '0', 'Administrador do site', 'sim', '480', '350', 0);
+INSERT INTO `noticias_dados` VALUES (12, '3', 'João Valdir de A. Filho', 'joaovaldir21@gmail.com', '2013-12-02', '11:49:55', 'Município assina convênio modalidade contrato de repasse com o Ministério do Turismo para construção da praça da Bíblia e da praça do Cruzeiro', 'Município assina convênio com o Ministério do Turismo no valor de R$ 250.000,00', 'Em Cuiabá, com Deputado Federal Valtenir Pereira e acompanhado pelo vereador Cleder Gaboardi o prefeito municipal Exmo. Sr Marcos de Sá assina convênio modalidade contrato de repasse com o Ministério do Turismo no valor de R$ 250.000,00 para construção da praça da Bíblia e da praça do Cruzeiro.\r\nAgradecimentos ao autor da emenda parlamentar Deputado Federal Valtenir Pereira, equipe de convênios da prefeitura Municipal de Santa Cruz do Xingu, Camara Municipal de Santa Cruz Do Xingu em especial ao vereador Cleder Gaboardi companheiro do PSB e vereadores Edson Botelho e Zelão companheiros do PROS. Estamos no Caminho certo.\r\n', 'praças.jpg', 'nao', 'left', '0', 'Administrador do site', 'sim', '480', '350', 0);
+INSERT INTO `noticias_dados` VALUES (13, '3', 'João Valdir de A. Filho', 'joaovaldir21@gmail.com', '2013-12-04', '09:16:36', 'Prefeitura e Câmara Municipal qualificando os servidores para um atendimento melhor para os munícipes, sobre o supervisão do SENAI.', 'Em busca de melhorar a qualidade de atendimento ao cidadão.', 'Prefeitura Municipal e Câmara Municipal de Santa Cruz do Xingu - MT qualificando seus servidores para um atendimento melhor aos munícipes, sobre o supervisão do SENAI.\r\n\r\nCurso de Relações interpessoais para os Servidores Públicos Municipais', 'Servidores publicos.jpg', 'nao', 'left', '0', 'Administrador do site', 'sim', '500', '400', 2);
+INSERT INTO `noticias_dados` VALUES (14, '8', 'João Valdir de A. Filho', 'joaovaldir21@gmail.com', '2013-12-04', '09:44:47', 'Município recebe uma motoniveladora nova para manutenção de nossas estradas vicinais pelo MDA Programa PAC 2. ', 'Município recebe motoniveladora nova para manutenção de nossas estradas vicinais', 'Município recebe uma motoniveladora nova para manutenção de nossas estradas vicinais pelo MDA Programa PAC 2. \r\n\r\nAgradecimentos á bancada federal de Mato Grosso, Secretaria Municipal de obras Secretário Ormindo Lucas Alves, Secretaria Municipal de Agricultura Secretário Julio Flavio e Câmara Municipal de Vereadores de Santa Cruz do Xingu.\r\n\r\nAgradecimento especial ao Deputado Federal Valtenir Pereira, Governador Silval Barbosa e Presidenta Dilma.\r\n', 'capa.jpg', 'sim', 'left', '0', 'Administrador do site', 'sim', '500', '400', 0);
+INSERT INTO `noticias_dados` VALUES (15, '5', 'João Valdir de A. Filho', 'joaovaldir21@gmail.com', '2013-12-04', '10:03:04', 'Prefeito Marcos de Sá, em Barra do Garças, firma pacto de cursos profissionais pelo Senai através do Pronatec.', 'Cursos profissionais pelo Senai através do Pronatec', 'Prefeito Marcos de Sá, em Barra do Garças, firma pacto de cursos profissionais pelo Senai através do Pronatec.\r\n\r\nSerão dezenas de cursos oferecidos pela Secretaria de Assistência Social. Dentre os quais se destaca os do ramo da construção civil. Cada módulo será de 180 horas.\r\n\r\nDentre os cursos contemplados destancam-se: Pedreiro de alvenaria (ainda este mês), Revestimento em Cerâmica, Instalações Elétricas, Instalações Hidráulicas, Carpintaria para Telhados e Pintura Predial. Um curso completo de Mestre de Obras de 1080 horas com a marca SENAI.\r\n\r\nATENÇÃO: Vagas limitadas.\r\n', 'capa.jpg', 'nao', 'left', '0', 'Administrador do site', 'sim', '500', '400', 0);
+INSERT INTO `noticias_dados` VALUES (16, '8', 'João Valdir de A. Filho', 'joaovaldir21@gmail.com', '2013-12-04', '10:08:58', 'Em Cuiabá bancada municipal acompanha andamento da licitação do asfalto que ligará Santa Cruz do Xingu ao entroncamento do Natanael', 'Licitação do asfalto até o Natanael (65 km)', 'Em Cuiabá bancada municipal acompanha andamento da licitação do asfalto que ligará Santa Cruz do Xingu ao entroncamento do Natanael na Secretaria Estadual de Infraestrutura de Mato Grosso.\r\n\r\n8 empresas manifestaram interesse na licitação do serviço de 65 km para asfaltamento.\r\n\r\nPrefeitura e câmara acompanhando o processo.\r\n', 'bancada municipal.jpg', 'nao', 'left', '0', 'Administrador do site', 'sim', '500', '400', 0);
+INSERT INTO `noticias_dados` VALUES (17, '6', 'João Valdir de A. Filho', 'joaovaldir21@gmail.com', '2013-12-04', '11:01:19', 'Lançamento oficial do portal do município de Santa Cruz do Xingu – MT', 'Lançamento oficial do portal do município de Santa Cruz do Xingu – MT', 'O município de Santa Cruz do Xingu – MT lançará portal oficial que servirá como meio de divulgação de suas ações e transparência de um trabalho que expressa responsabilidade e sucesso.\r\n\r\nO portal ficara hospedado no endereço eletrônico www.santacruzdoxingu.mt.gov.br e terá notícias de todos os eventos realizados no município.\r\n', 'foto_site.jpg', 'nao', 'left', '0', 'Administrador do site', 'sim', '500', '400', 3);
+INSERT INTO `noticias_dados` VALUES (18, '5', 'João Valdir de A. Filho', 'joaovaldir21@gmail.com', '2013-12-04', '11:09:16', 'Santa Cruz do Xingu é uma das únicas cidades que comemorou o 7 de setembro no Norte Araguaia', 'Santa Cruz do Xingu é uma das únicas cidades que comemorou o 7 de setembro no Norte Araguaia', 'A pequena cidade de Santa Cruz do Xingu deu exemplo de patriotismo neste feriado de 7 de setembro, sendo uma das únicas cidades da região Norte Araguaia a realizar o desfile em comemoração a Independência do Brasil.\r\n\r\nDe acordo com a Secretária de Educação  de Santa Cruz do Xingu Rosangela Pinto o desfile contou com a participação de aproximadamente 700 pessoas entre alunos, profissionais da educação e a população em Geral.\r\n\r\nPela primeira vez na história de Santa Cruz do Xingu, o desfile contou com a apresentação da Fanfarra Municipal de Santa Cruz. “O prefeito Marcos de Sá se empenhou em adquirir a fanfarra para que esse evento acontecesse nos outros anos a gente precisava contar com fanfarras de outras cidades para o desfile acontecer”, contou a Secretária de Educação de Santa Cruz.\r\n\r\nOs alunos aproveitaram o evento para pedir a preservação do Rio Fontoura, assuntos como Proerd, Alfabetização das crianças na idade certa e temas ligados a educação também foram lembrados durante o desfile que começou por volta das 07:30 hs da manhã e encerrou por volta das 10:00 hs em frente a Prefeitura Municipal de Santa Cruz do Xingu com a execução do Hino Nacional.', 'porta bandeira - desfile.jpg', 'nao', 'left', '0', 'Administrador do site', 'sim', '500', '400', 0);
+INSERT INTO `noticias_dados` VALUES (19, '6', 'João Valdir de A. Filho', 'joaovaldir21@gmail.com', '2013-12-04', '11:11:46', 'Prefeito adquire veículos novos para quatro secretarias do município', 'Prefeito adquire veículos novos para quatro secretarias do município', 'Na oportunidade do desfile de 7 de setembro, o Prefeito Marcos de Sá, aproveitou para fazer a entrega de 4 veículos Fiat Uno novos as secretarias de Educação, Saúde, Assistência Social e Administração, cada uma recebeu um carro que auxiliará no desempenho de suas ações dentro do município e assim garantir aos munícipes seus direitos e uma cidade boa para se viver.', 'Frota Nova.jpg', 'nao', 'left', '0', 'Administrador do site', 'sim', '500', '400', 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `ondecomer`
+-- 
+
+CREATE TABLE `ondecomer` (
+  `id` int(4) NOT NULL default '0',
+  `idcid` varchar(4) NOT NULL default '',
+  `nome` varchar(100) NOT NULL default '',
+  `end` varchar(100) NOT NULL default '',
+  `tel` varchar(100) NOT NULL default '',
+  `especialidade` varchar(255) NOT NULL default '',
+  `pastaf` varchar(100) NOT NULL default '',
+  `foto1` varchar(100) NOT NULL default '',
+  `foto2` varchar(100) NOT NULL default '',
+  `foto3` varchar(100) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- 
+-- Extraindo dados da tabela `ondecomer`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `ondeficar`
+-- 
+
+CREATE TABLE `ondeficar` (
+  `id` int(4) NOT NULL default '0',
+  `idcid` varchar(4) NOT NULL default '',
+  `categoria` char(2) NOT NULL default '',
+  `nome` varchar(100) NOT NULL default '',
+  `endereco` varchar(150) NOT NULL default '',
+  `opcoes` longtext NOT NULL,
+  `tel` varchar(13) NOT NULL default '',
+  `email` varchar(100) NOT NULL default '',
+  `site` varchar(100) NOT NULL default '',
+  `pastaf` varchar(100) NOT NULL default '',
+  `foto1` varchar(40) NOT NULL default '',
+  `foto2` varchar(40) NOT NULL default '',
+  `foto3` varchar(40) NOT NULL default '',
+  `foto4` varchar(40) NOT NULL default '',
+  `foto5` varchar(40) NOT NULL default '',
+  `foto6` varchar(40) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- 
+-- Extraindo dados da tabela `ondeficar`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `options`
+-- 
+
+CREATE TABLE `options` (
+  `id` int(11) NOT NULL auto_increment,
+  `ques_id` int(11) NOT NULL,
+  `value` varchar(300) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+
+-- 
+-- Extraindo dados da tabela `options`
+-- 
+
+INSERT INTO `options` VALUES (9, 2, 'Otimo');
+INSERT INTO `options` VALUES (8, 2, 'Bom');
+INSERT INTO `options` VALUES (7, 2, 'Regular');
+INSERT INTO `options` VALUES (6, 2, 'Ruim');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `phpsp_sessions`
+-- 
+
+CREATE TABLE `phpsp_sessions` (
+  `id` char(20) NOT NULL default '',
+  `LastAction` datetime NOT NULL default '0000-00-00 00:00:00',
+  `ip` char(15) NOT NULL default '',
+  `userID` mediumint(9) default NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `id_2` (`id`),
+  KEY `id` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- 
+-- Extraindo dados da tabela `phpsp_sessions`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `phpsp_sessionvars`
+-- 
+
+CREATE TABLE `phpsp_sessionvars` (
+  `id` mediumint(8) unsigned NOT NULL auto_increment,
+  `session` varchar(20) NOT NULL default '',
+  `name` varchar(32) NOT NULL default '',
+  `intval` int(10) unsigned default NULL,
+  `strval` varchar(100) default NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `id` (`id`),
+  KEY `sessionID` (`session`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `phpsp_sessionvars`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `phpsp_users`
+-- 
+
+CREATE TABLE `phpsp_users` (
+  `primary_key` mediumint(8) unsigned NOT NULL auto_increment,
+  `id_franquia` char(3) collate latin1_general_ci NOT NULL default '',
+  `nome` varchar(255) collate latin1_general_ci NOT NULL default '',
+  `cpf` varchar(11) collate latin1_general_ci NOT NULL default '',
+  `niver` date NOT NULL default '0000-00-00',
+  `sexo` varchar(9) collate latin1_general_ci NOT NULL default '',
+  `endereco` varchar(255) collate latin1_general_ci NOT NULL default '',
+  `complemento` varchar(50) collate latin1_general_ci NOT NULL default '',
+  `numero` varchar(5) collate latin1_general_ci NOT NULL default '',
+  `bairro` varchar(200) collate latin1_general_ci NOT NULL default '',
+  `cep` varchar(9) collate latin1_general_ci NOT NULL default '',
+  `cidade` varchar(200) collate latin1_general_ci NOT NULL default '',
+  `estado` char(2) collate latin1_general_ci NOT NULL default '',
+  `ddd1` varchar(5) collate latin1_general_ci NOT NULL default '',
+  `fone1` varchar(9) collate latin1_general_ci NOT NULL default '',
+  `ddd2` varchar(5) collate latin1_general_ci NOT NULL default '',
+  `fone2` varchar(9) collate latin1_general_ci NOT NULL default '',
+  `email` varchar(255) collate latin1_general_ci NOT NULL default '',
+  `msn` varchar(255) collate latin1_general_ci NOT NULL default '',
+  `site` varchar(255) collate latin1_general_ci NOT NULL default '',
+  `user` varchar(50) collate latin1_general_ci NOT NULL default '',
+  `password` varchar(32) collate latin1_general_ci NOT NULL default '',
+  `userlevel` tinyint(3) default NULL,
+  PRIMARY KEY  (`primary_key`),
+  KEY `user` (`user`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=3 ;
+
+-- 
+-- Extraindo dados da tabela `phpsp_users`
+-- 
+
+INSERT INTO `phpsp_users` VALUES (1, '1', 'JOÃO VALDIR DE ALMEIDA FILHO', '97339792104', '1981-11-09', 'Masculino', 'AVENIDA PROJETADA C', '', '02', 'ELDORADO', '78664-000', 'Santa Cruz do Xingu', 'MT', '66', '35941267', '66', '84446007', 'joaovaldir21@gmail.com', 'joao_netbira@hotmail.com', 'www.portalscx.com.br', 'Birex', '42363140', 1);
+INSERT INTO `phpsp_users` VALUES (2, '1', 'João Valdir de A. Filho', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 'joaovaldir21@gmail.com', '', '', '', 'd41d8cd98f00b204e9800998ecf8427e', 4);
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `player`
+-- 
+
+CREATE TABLE `player` (
+  `id` int(3) NOT NULL auto_increment,
+  `id_cat` char(3) NOT NULL default '',
+  `id_franquia` char(3) NOT NULL default '',
+  `nome` varchar(255) NOT NULL default '',
+  `data` date NOT NULL default '0000-00-00',
+  `local` varchar(255) NOT NULL default '',
+  `pasta` varchar(255) NOT NULL default '',
+  `foto01` varchar(255) NOT NULL default '',
+  `destaque` char(1) NOT NULL default 'S',
+  `logo` enum('S','N') NOT NULL default 'S',
+  `perfil` text NOT NULL,
+  `por` varchar(255) NOT NULL default '',
+  `fundo` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `player`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `presidentes`
+-- 
+
+CREATE TABLE `presidentes` (
+  `id` int(3) NOT NULL auto_increment,
+  `id_franquia` char(3) NOT NULL default '1',
+  `nome` varchar(255) NOT NULL default '',
+  `descricao` text NOT NULL,
+  `periodo` varchar(255) NOT NULL default '',
+  `imagem` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `presidentes`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `questions`
+-- 
+
+CREATE TABLE `questions` (
+  `id` int(11) NOT NULL auto_increment,
+  `ques` text NOT NULL,
+  `created_on` datetime NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+-- 
+-- Extraindo dados da tabela `questions`
+-- 
+
+INSERT INTO `questions` VALUES (2, 'O que achou do nosso portal?', '2013-11-26 11:36:42');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `roteiros`
+-- 
+
+CREATE TABLE `roteiros` (
+  `id` int(4) NOT NULL auto_increment,
+  `idcid` varchar(60) NOT NULL default '',
+  `titulo` varchar(150) NOT NULL default '',
+  `textopeq` varchar(150) NOT NULL default '',
+  `textog` longtext NOT NULL,
+  `foto` varchar(100) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `roteiros`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `subcat_ano`
+-- 
+
+CREATE TABLE `subcat_ano` (
+  `id` int(5) NOT NULL auto_increment,
+  `subcat` varchar(5) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+-- 
+-- Extraindo dados da tabela `subcat_ano`
+-- 
+
+INSERT INTO `subcat_ano` VALUES (1, '2001');
+INSERT INTO `subcat_ano` VALUES (2, '2002');
+INSERT INTO `subcat_ano` VALUES (3, '2003');
+INSERT INTO `subcat_ano` VALUES (4, '2004');
+INSERT INTO `subcat_ano` VALUES (5, '2005');
+INSERT INTO `subcat_ano` VALUES (6, '2006');
+INSERT INTO `subcat_ano` VALUES (7, '2007');
+INSERT INTO `subcat_ano` VALUES (8, '2008');
+INSERT INTO `subcat_ano` VALUES (9, '2009');
+INSERT INTO `subcat_ano` VALUES (10, '2010');
+INSERT INTO `subcat_ano` VALUES (11, '2011');
+INSERT INTO `subcat_ano` VALUES (12, '2012');
+INSERT INTO `subcat_ano` VALUES (13, '2013');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `tab_admin`
+-- 
+
+CREATE TABLE `tab_admin` (
+  `nome` varchar(200) default NULL,
+  `senha` varchar(200) default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- 
+-- Extraindo dados da tabela `tab_admin`
+-- 
+
+INSERT INTO `tab_admin` VALUES ('Birex', '42363140');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `tab_coments`
+-- 
+
+CREATE TABLE `tab_coments` (
+  `id` int(11) NOT NULL auto_increment,
+  `id_user` int(11) default NULL,
+  `id_post` int(11) default NULL,
+  `nome` varchar(250) default NULL,
+  `email` varchar(250) default NULL,
+  `flog` varchar(250) default NULL,
+  `comentario` longtext,
+  `data` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `tab_coments`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `tab_denuncia`
+-- 
+
+CREATE TABLE `tab_denuncia` (
+  `id` int(11) NOT NULL auto_increment,
+  `nome` varchar(200) default NULL,
+  `email` varchar(200) default NULL,
+  `login_denunciado` varchar(200) default NULL,
+  `url` varchar(200) default NULL,
+  `data` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  `descri` longtext,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `tab_denuncia`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `tab_fotos`
+-- 
+
+CREATE TABLE `tab_fotos` (
+  `id` int(11) NOT NULL auto_increment,
+  `id_user` int(11) default NULL,
+  `url_completa` varchar(250) default NULL,
+  `url` varchar(250) default NULL,
+  `titulo` varchar(250) default NULL,
+  `comentario` longtext,
+  `data` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `tab_fotos`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `tab_noticias`
+-- 
+
+CREATE TABLE `tab_noticias` (
+  `id` int(11) NOT NULL auto_increment,
+  `titulo` varchar(200) default NULL,
+  `conteudo` longtext,
+  `data` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  `autor` varchar(50) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `tab_noticias`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `tab_preferencias`
+-- 
+
+CREATE TABLE `tab_preferencias` (
+  `id_user` int(11) default NULL,
+  `cor_fundo` varchar(100) default NULL,
+  `cor_letra` varchar(100) default NULL,
+  `cor_titulo` varchar(100) default NULL,
+  `titulo_flog` varchar(200) default NULL,
+  `tamanho_titulo` varchar(100) default NULL,
+  `tipo_letra` varchar(100) default NULL,
+  `favorito_1` varchar(50) default NULL,
+  `favorito_2` varchar(50) default NULL,
+  `favorito_3` varchar(50) default NULL,
+  `favorito_4` varchar(50) default NULL,
+  `favorito_5` varchar(50) default NULL,
+  `favorito_6` varchar(50) default NULL,
+  `favorito_7` varchar(50) default NULL,
+  `favorito_8` varchar(50) default NULL,
+  `favorito_9` varchar(50) default NULL,
+  `favorito_10` varchar(50) default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- 
+-- Extraindo dados da tabela `tab_preferencias`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `tab_ranking`
+-- 
+
+CREATE TABLE `tab_ranking` (
+  `id_user` int(11) default NULL,
+  `visitas` int(11) default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- 
+-- Extraindo dados da tabela `tab_ranking`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `tab_restri`
+-- 
+
+CREATE TABLE `tab_restri` (
+  `id_user` int(11) NOT NULL auto_increment,
+  `plano` tinyint(4) default NULL,
+  `fotos` int(11) default NULL,
+  `data` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`id_user`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `tab_restri`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `tab_users`
+-- 
+
+CREATE TABLE `tab_users` (
+  `id` int(11) NOT NULL auto_increment,
+  `primeira` tinyint(4) default NULL,
+  `valida` tinyint(4) default NULL,
+  `nome` varchar(200) default NULL,
+  `sobrenome` varchar(200) default NULL,
+  `login` varchar(200) default NULL,
+  `senha` varchar(200) default NULL,
+  `data_dia` int(2) default NULL,
+  `data_mes` int(2) default NULL,
+  `data_ano` int(4) default NULL,
+  `sexo` tinyint(4) default NULL,
+  `pais` varchar(200) default NULL,
+  `estado` varchar(200) default NULL,
+  `cidade` varchar(200) default NULL,
+  `email` varchar(200) default NULL,
+  `bloq` tinyint(4) default NULL,
+  `plano` tinyint(4) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+-- 
+-- Extraindo dados da tabela `tab_users`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `tab_valida`
+-- 
+
+CREATE TABLE `tab_valida` (
+  `cod` varchar(250) default NULL,
+  `login` varchar(250) default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- 
+-- Extraindo dados da tabela `tab_valida`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `tab_visitas`
+-- 
+
+CREATE TABLE `tab_visitas` (
+  `visitas` int(11) default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- 
+-- Extraindo dados da tabela `tab_visitas`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `urgente`
+-- 
+
+CREATE TABLE `urgente` (
+  `id` int(3) NOT NULL auto_increment,
+  `id_franquia` char(3) NOT NULL default '',
+  `id_galeria` varchar(5) NOT NULL default '',
+  `categoria` varchar(50) NOT NULL default '',
+  `foto` varchar(255) NOT NULL default '',
+  `titulo` varchar(255) NOT NULL default '',
+  `texto` varchar(255) NOT NULL default '',
+  `urgente` varchar(2) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+-- 
+-- Extraindo dados da tabela `urgente`
+-- 
+
+INSERT INTO `urgente` VALUES (1, '1', '5', 'fotodia', '', 'titulo', 'Prefeito assina convênio que garante verba para asfaltar zona urbana do município', '2');
+INSERT INTO `urgente` VALUES (2, '1', '17', 'fotodia', '', 'titulo', 'Prefeitura lança portal eletronico oficial do município', '1');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `users`
+-- 
+
+CREATE TABLE `users` (
+  `nome` varchar(20) default NULL,
+  `perfil` tinytext,
+  `date` datetime default NULL,
+  `sessionid` varchar(255) default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- 
+-- Extraindo dados da tabela `users`
+-- 
+
+INSERT INTO `users` VALUES ('cv', '<img border=0 src=caretas/22.gif align=''middle''>&nbsp;<font color=#000000><b>cv</b></font>', '2011-06-15 18:51:13', '05fc698a3b65ef247765d9ca8f74e8bc');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `video`
+-- 
+
+CREATE TABLE `video` (
+  `id` int(3) NOT NULL auto_increment,
+  `id_franquia` char(3) NOT NULL default '',
+  `id_galeria` varchar(5) NOT NULL default '',
+  `categoria` varchar(50) NOT NULL default '',
+  `foto` varchar(255) NOT NULL default '',
+  `titulo` varchar(255) NOT NULL default '',
+  `texto` varchar(255) NOT NULL default '',
+  `previa` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `video`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `video_not`
+-- 
+
+CREATE TABLE `video_not` (
+  `id` int(3) NOT NULL auto_increment,
+  `id_franquia` char(3) NOT NULL default '',
+  `id_galeria` varchar(5) NOT NULL default '',
+  `categoria` varchar(50) NOT NULL default '',
+  `foto` varchar(255) NOT NULL default '',
+  `titulo` varchar(255) NOT NULL default '',
+  `texto` varchar(255) NOT NULL default '',
+  `previa` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Extraindo dados da tabela `video_not`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `votes`
+-- 
+
+CREATE TABLE `votes` (
+  `id` int(11) NOT NULL auto_increment,
+  `option_id` int(11) NOT NULL,
+  `voted_on` datetime NOT NULL,
+  `ip` varchar(16) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+-- 
+-- Extraindo dados da tabela `votes`
+-- 
+
+INSERT INTO `votes` VALUES (1, 9, '2013-11-26 12:22:51', '127.0.0.1');
+INSERT INTO `votes` VALUES (2, 8, '2013-11-26 11:26:22', '127.0.0.1');
+INSERT INTO `votes` VALUES (3, 7, '2013-11-26 11:26:34', '127.0.0.1');
+INSERT INTO `votes` VALUES (4, 9, '2013-11-26 11:27:17', '127.0.0.1');
+INSERT INTO `votes` VALUES (5, 9, '2013-11-26 11:27:26', '127.0.0.1');
